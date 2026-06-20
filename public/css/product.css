@@ -1,0 +1,42 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px;
+}
+
+.product-img {
+    flex: 0.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-desc-container {
+    flex: 0.6;
+}
+
+.product-item-title {
+    font-size: 3rem;
+    font-family: sans-serif;
+}
+
+.product-desc-text {
+    font-family: sans-serif;
+}
+
+.product-cat {
+    font-family: sans-serif;
+}
+
+.item-btn {
+    align-self: center;
+    padding: 15px 100px;
+}
+
+.item-desc {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 70%;
+}

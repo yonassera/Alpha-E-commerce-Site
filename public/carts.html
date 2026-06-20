@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carts - Alpha Market</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/carts.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <a href="/index.html" style="text-decoration: none;">
+            <h1 class="text logo">Alpha Market</h1>
+        </a>
+
+        <div class="right-header">
+            <a id="cart" href="/carts.html">
+                <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="30px" fill="#e3e3e3"><path d="M231.83-102.64Q210-124.62 210-155.47q0-30.86 21.98-52.7Q253.95-230 284.81-230t52.69 21.98q21.83 21.97 21.83 52.83t-21.97 52.69q-21.98 21.83-52.83 21.83-30.86 0-52.7-21.97Zm400 0Q610-124.62 610-155.47q0-30.86 21.98-52.7Q653.95-230 684.81-230t52.69 21.98q21.83 21.97 21.83 52.83t-21.97 52.69q-21.98 21.83-52.83 21.83-30.86 0-52.7-21.97ZM238.67-734 344-515.33h285.33l120-218.67H238.67ZM206-800.67h589.38q22.98 0 34.97 20.84 11.98 20.83.32 41.83L693.33-490.67q-11 19.34-28.87 30.67-17.87 11.33-39.13 11.33H324l-52 96h487.33V-286H278q-43 0-63-31.83-20-31.84-.33-68.17l60.66-111.33-149.33-316H47.33V-880h121.34L206-800.67Zm138 285.34h285.33H344Z"/></svg>
+            </a>
+            <div id="profile">
+                <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="30px" fill="#e3e3e3"><path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm146.5-204.5Q340-521 340-580t40.5-99.5Q421-720 480-720t99.5 40.5Q620-639 620-580t-40.5 99.5Q539-440 480-440t-99.5-40.5ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm100-95.5q47-15.5 86-44.5-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160q53 0 100-15.5ZM523-537q17-17 17-43t-17-43q-17-17-43-17t-43 17q-17 17-17 43t17 43q17 17 43 17t43-17Zm-43-43Zm0 360Z"/></svg>
+            </div>
+        </div>
+    </header>
+
+    <section class="main">
+        <div class="cart-section">
+            <h1 class="text">Cart items</h1>
+            <div class="cart-item-container">
+                <div class="left-cart-info">
+                    <svg class="clickable del-item" xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="red"><path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg>
+                    <img class="item-img" src="./images/Headphone.webp" alt="Headphone image">
+                    <div class="cart-item-info">
+                        <h2 class="text">Headphones X3</h2>
+                        <p class="text">Tech and gadgets</p>
+                        <p class="text price">$24</p>
+                    </div>
+                </div>
+                <div class="right-cart-info">
+                    <button class="clickable minus-btn" style="padding: 5px; border-radius: 10px; border: none; margin: 10px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#121824"><path d="M200-440v-80h560v80H200Z"/></svg>
+                    </button>
+                    
+                    <p class="text quantity">0</p>
+                    <button class="clickable plus-btn" style="padding: 5px; border-radius: 10px; border: none; margin: 10px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#121824"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="cart-item-container">
+                <div class="left-cart-info">
+                    <svg class="clickable del-item" xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="red"><path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg>
+                    <img class="item-img" src="./images/Headphone.webp" alt="Headphone image">
+                    <div class="cart-item-info">
+                        <h2 class="text">Headphones X3</h2>
+                        <p class="text">Tech and gadgets</p>
+                        <p class="text price">$24</p>
+                    </div>
+                </div>
+                <div class="right-cart-info">
+                    <button class="clickable minus-btn" style="padding: 5px; border-radius: 10px; border: none; margin: 10px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#121824"><path d="M200-440v-80h560v80H200Z"/></svg>
+                    </button>
+                    
+                    <p class="text quantity">0</p>
+                    <button class="clickable plus-btn" style="padding: 5px; border-radius: 10px; border: none; margin: 10px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#121824"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="cart-item-container">
+                <div class="left-cart-info">
+                    <svg class="clickable del-item" xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="red"><path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg>
+                    <img class="item-img" src="./images/Headphone.webp" alt="Headphone image">
+                    <div class="cart-item-info">
+                        <h2 class="text">Headphones X3</h2>
+                        <p class="text">Tech and gadgets</p>
+                        <p class="text price">$24</p>
+                    </div>
+                </div>
+                <div class="right-cart-info">
+                    <button class="clickable minus-btn" style="padding: 5px; border-radius: 10px; border: none; margin: 10px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#121824"><path d="M200-440v-80h560v80H200Z"/></svg>
+                    </button>
+                    
+                    <p class="text quantity">0</p>
+                    <button class="clickable plus-btn" style="padding: 5px; border-radius: 10px; border: none; margin: 10px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#121824"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="cart-checkout">
+            <h1 class="text title">Summary</h1>
+            <div class="checkout-info">
+                <h2 class="text" style="font-family: sans-serif;">Estimated sub-total: </h2>
+                <p class="text price">$45</p>
+            </div>
+            
+            <button class="btn checkout-btn">Proceed to checkout</button>
+        </div>
+    </section>
+
+    <div class="modal">
+        <div class="popup">
+            <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px" fill="#75FB4C"><path d="m421-298 283-283-46-45-237 237-120-120-45 45 165 166Zm59 218q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Zm0-60q142 0 241-99.5T820-480q0-142-99-241t-241-99q-141 0-240.5 99T140-480q0 141 99.5 240.5T480-140Zm0-340Z"/></svg>
+            <h1 class="text" style="font-family: sans-serif;">Thank you for your purchase!</h1>
+            <p class="text" style="font-family: sans-serif;">We have successfully recieved your order!</p>
+            <button class="btn">Close</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="vertical-text">
+            <h1 class="text">Alpha Market</h1>
+            <p class="text">Where expectation meets quality</p>
+        </div>
+        <div class="vertical-text">
+            <h1 class="text">Contact Us</h1>
+            <ul class="contact-list">
+                <li class="text contact">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z"/></svg>
+                    +251967554567
+                </li>
+                <li class="text contact">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M280-280q-33 0-56.5-23.5T200-360v-400q0-33 23.5-56.5T280-840h560q33 0 56.5 23.5T920-760v400q0 33-23.5 56.5T840-280H280Zm280-188L280-663v303h560v-303L560-468Zm0-98 280-194H280l280 194ZM120-120q-33 0-56.5-23.5T40-200v-500h80v500h660v80H120Zm720-546v-94H280v94-94h560v94Z"/></svg>
+                    alphamarket@gmail.com
+                </li>
+            </ul>
+        </div>
+        <div class="vertical-text">
+            <p class="text">&copy; 2026 Alpha Market.</p>
+            <p class="text">All rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

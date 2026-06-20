@@ -1,0 +1,243 @@
+:root {
+    --bg-color: #f2f5f8;
+    --theme-color: rgb(2, 2, 65);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: var(--theme-color);
+}
+
+.logo {
+    font-family: "Dancing Script", serif;
+    color: var(--bg-color);
+}
+
+/* Start of hero section */
+.right-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#cart, #profile {
+    display: flex;
+    align-items: center;
+}
+
+.search-box {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    display: flex;
+    padding: 0px 5px;
+    align-items: center;
+    width: 300px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.search {
+    border: none;
+    padding: 2px;
+    width: 100%;
+    font-size: 1.05rem;
+}
+
+.search:focus {
+    border: none;
+    outline: none;
+}
+
+.hero {
+    height: calc(100vh - 68.33px);
+    display: flex;
+}
+
+.left-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-info {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    gap: 15px;
+}
+
+.headline {
+    font-family: "Playfair Display", serif;
+    color: var(--theme-color) !important;
+    font-size: 3rem;
+}
+
+.sub-headline {
+    color: var(--theme-color) !important;
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    opacity: 0.6;
+}
+
+.right-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image {
+    box-shadow: 20px 20px 30px 10px rgba(0, 0, 0, 0.15); 
+    border-radius: 20px;
+}
+
+.explore-btn {
+    align-self: flex-start;
+    padding: 15px 20px !important;
+    border-radius: 50px !important;
+}
+
+/* Common Styles */
+
+.btn {
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    color: white;
+    background-color: var(--theme-color);
+    border: none;
+}
+
+.btn:hover, .clickable:hover {
+    transform: scale(0.97);
+    cursor: pointer;
+}
+
+.btn:active, .clickable:active {
+    transform: scale(0.9);
+}
+
+.nav-btn:hover {
+    transform: scale(0.95);
+    cursor: pointer;
+}
+
+.nav-btn:active {
+    transform: scale(0.95);
+}
+
+.text {
+    margin: 0;
+    padding: 0;
+    /* font-family: sans-serif; */
+}
+
+/* End of hero section */
+
+/* Footer */
+footer {
+    display: flex;
+    background-color: var(--theme-color);
+    justify-content: space-around !important;
+    margin-top: 60px;
+    padding: 50px 20px 20px 20px;
+}
+
+.vertical-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    color: white;
+}
+
+.contact-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+/* End of footer */
+
+/* Products */
+.category {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 200px;
+    border-top: 1px solid var(--theme-color);
+}
+
+.cat-text {
+    color: var(--theme-color) !important;
+    font-family: sans-serif;
+    font-size: 2rem;
+}
+
+.nav-container {
+    display: flex;
+    gap: 10px;
+}
+
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 30px;
+    width: 70%;
+    margin-left: 15%;
+}
+
+.item-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px 5px rgb(27, 9, 18, 0.17);
+}
+
+.item-container:hover {
+    transform: scale(0.97);
+    box-shadow: 5px 5px 30px 20px rgb(27, 9, 18, 0.17);
+    cursor: pointer;
+}
+
+.item-container:active {
+    transform: scale(0.95);
+}
+
+.price {
+    font-size: 1.5rem;
+}
+
+.item-title {
+    font-family: sans-serif;
+}
+
+.item-image {
+    width: 150px;
+    border-radius: 20px;
+    align-self: center;
+}
+
+.item-btn {
+    background-color: #ff4b2b;
+}

@@ -1,0 +1,175 @@
+body {
+    font-family: sans-serif;
+}
+
+.main {
+    display: flex;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.panel-elements {
+    width: 220px;
+    background-color: var(--theme-color);
+    color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.side-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px !important;
+    border-radius: 10px;
+}
+
+.options:hover {
+    cursor: pointer;
+    box-shadow: inset 150px 0 30px 10px rgba(2, 47, 163, 0.7);
+}
+
+.user-option {
+    font-weight: 100;
+}
+
+.logout-btn {
+    background-color: red !important;
+    margin-top: 580px;
+}
+
+.suspend-btn, .delete-btn {
+    padding: 5px 10px !important;
+    background-color: red !important;
+}
+
+.unsuspend-btn {
+    background-color: green !important;
+    padding: 5px 10px !important;
+}
+
+.user-page .product-container {
+    width: 87%;
+    align-self: center;
+}
+
+.products {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.main-title, .subtitle {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.stat-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 0 5px rgb(0, 0, 0, 0.3);
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgb(0, 0, 0, 0.3);
+    background-color: white;
+}
+
+.add-search {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-btn {
+    background-color: rgb(4, 4, 174) !important;
+    display: flex;
+    align-items: center;
+}
+
+.heading-container {
+    display: flex;
+    background-color: var(--bg-color);
+    padding: 10px;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    gap: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+.item-list {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.3);
+}
+
+.product-heading, .product-row {
+    flex: 0.3;
+    display: flex;
+    align-items: center;
+}
+
+.category-heading, .category-row {
+    flex: 0.2;
+    display: flex;
+    align-items: center;
+}
+
+.price-heading, .price-row {
+    flex: 0.2;
+    display: flex;
+    align-items: center;
+}
+
+.stock-heading, .stock-row {
+    flex: 0.2;
+    display: flex;
+    align-items: center;
+}
+
+.actions-heading, .actions-row {
+    flex: 0.1;
+    display: flex;
+    align-items: center;
+}
+
+.product-row, .actions-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
