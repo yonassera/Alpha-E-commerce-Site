@@ -30,7 +30,7 @@
                     Users
                 </h3>
             </div>
-            <button class="btn logout-btn">Logout</button>
+            <button class="btn logout-btn danger-btn">Logout</button>
         </div>
         <div class="products user-page">
             <div class="main-title">
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="stat-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="rgb(2, 2, 65)"><path d="M523-523Zm-86 86Zm154.5 278.5Q646-177 691-212q-47-33-100.5-53.5T480-286q-57 0-110.5 20.5T269-212q45 35 99.5 53.5T480-140q57 0 111.5-18.5ZM566-479l-43-43q17-11 25.5-28t8.5-37q0-32-22.5-54.5T480-664q-20 0-37 8.5T415-630l-43-43q20-25 48-38t60-13q57 0 97 40t40 97q0 32-13 60t-38 48Zm236 236-41-41q29-44 44-93.5T820-480q0-142-99-241t-241-99q-53 0-102.5 15T285-760l-42-42q52-38 112.5-58T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 64-20 124.5T802-243ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-64 19.5-124.5T157-716L26-848l43-43L876-84l-43 43-634-633q-30 43-44.5 92.5T140-480q0 62 21.5 119.5T222-255q58-40 123-65.5T480-346q46 0 89.5 11t85.5 31l107 107q-57 57-129.5 87T480-80Z"/></svg>                    
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="red"><path d="M523-523Zm-86 86Zm154.5 278.5Q646-177 691-212q-47-33-100.5-53.5T480-286q-57 0-110.5 20.5T269-212q45 35 99.5 53.5T480-140q57 0 111.5-18.5ZM566-479l-43-43q17-11 25.5-28t8.5-37q0-32-22.5-54.5T480-664q-20 0-37 8.5T415-630l-43-43q20-25 48-38t60-13q57 0 97 40t40 97q0 32-13 60t-38 48Zm236 236-41-41q29-44 44-93.5T820-480q0-142-99-241t-241-99q-53 0-102.5 15T285-760l-42-42q52-38 112.5-58T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 64-20 124.5T802-243ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-64 19.5-124.5T157-716L26-848l43-43L876-84l-43 43-634-633q-30 43-44.5 92.5T140-480q0 62 21.5 119.5T222-255q58-40 123-65.5T480-346q46 0 89.5 11t85.5 31l107 107q-57 57-129.5 87T480-80Z"/></svg>                    
                     <div class="stat">
                         <p class="text">Suspended Customers</p>
                         <h1 class="text">12</h1>
@@ -84,12 +84,23 @@
                     <div class="items">
                         <div class="item-list">
                             <div class="product-row">
-                            <h3 class="text">Alemu Kassie</h3>
+                                <h3 class="text">Alemu Kassie</h3>
                             </div>
                             <h3 class="text category-row">Active</h3>
-                            <div class="actions-row">
-                                <button class="btn action-1 suspend-btn">Suspend</button>
-                                <button class="btn action-2 delete-btn">Delete</button>
+                            <div class="actions-row twin-btn">
+                                <button class="btn action-1 suspend-btn danger-btn">Suspend</button>
+                                <button class="btn action-2 delete-btn danger-btn">Delete</button>
+                            </div>
+                        </div>
+
+                        <div class="item-list">
+                            <div class="product-row">
+                            <h3 class="text">Alemu Kassie</h3>
+                            </div>
+                            <h3 class="text category-row">Suspended</h3>
+                            <div class="actions-row twin-btn">
+                                <button class="btn action-1 unsuspend-btn positive-btn">Unsuspend</button>
+                                <button class="btn action-2 delete-btn danger-btn">Delete</button>
                             </div>
                         </div>
 
@@ -98,20 +109,9 @@
                             <h3 class="text">Alemu Kassie</h3>
                             </div>
                             <h3 class="text category-row">Active</h3>
-                            <div class="actions-row">
-                                <button class="btn action-1 unsuspend-btn">Unsuspend</button>
-                                <button class="btn action-2 delete-btn">Delete</button>
-                            </div>
-                        </div>
-
-                        <div class="item-list">
-                            <div class="product-row">
-                            <h3 class="text">Alemu Kassie</h3>
-                            </div>
-                            <h3 class="text category-row">Active</h3>
-                            <div class="actions-row">
-                                <button class="btn action-1 suspend-btn">Suspend</button>
-                                <button class="btn action-2 delete-btn">Delete</button>
+                            <div class="actions-row twin-btn">
+                                <button class="btn action-1 suspend-btn danger-btn">Suspend</button>
+                                <button class="btn action-2 delete-btn danger-btn">Delete</button>
                             </div>
                         </div>
                     </div>
@@ -119,7 +119,40 @@
                 
             </div>
         </div>
-
     </div>
+
+    <div class="modal">
+        <!-- <div class="popup suspend-popup">
+            <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px" fill="red"><path d="M523-523Zm-86 86Zm154.5 278.5Q646-177 691-212q-47-33-100.5-53.5T480-286q-57 0-110.5 20.5T269-212q45 35 99.5 53.5T480-140q57 0 111.5-18.5ZM566-479l-43-43q17-11 25.5-28t8.5-37q0-32-22.5-54.5T480-664q-20 0-37 8.5T415-630l-43-43q20-25 48-38t60-13q57 0 97 40t40 97q0 32-13 60t-38 48Zm236 236-41-41q29-44 44-93.5T820-480q0-142-99-241t-241-99q-53 0-102.5 15T285-760l-42-42q52-38 112.5-58T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 64-20 124.5T802-243ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-64 19.5-124.5T157-716L26-848l43-43L876-84l-43 43-634-633q-30 43-44.5 92.5T140-480q0 62 21.5 119.5T222-255q58-40 123-65.5T480-346q46 0 89.5 11t85.5 31l107 107q-57 57-129.5 87T480-80Z"/></svg>                    
+            <h2 class="text">Are you sure?</h2>
+            <p class="text">You want to suspend the user?</p>
+            <div class="twin-btn">
+                <button class="btn approve-suspend danger-btn">Yes</button>
+                <button class="btn close-btn">Close</button>
+            </div>
+        </div> -->
+
+        <!-- <div class="popup delete-popup">
+            <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px" fill="red"><path d="M648-542v-60h232v60H648Zm-396 19q-42-42-42-108t42-108q42-42 108-42t108 42q42 42 42 108t-42 108q-42 42-108 42t-108-42ZM40-160v-94q0-35 17.5-63.5T108-360q75-33 133.5-46.5T360-420q60 0 118 13.5T611-360q33 15 51 43t18 63v94H40Zm60-60h520v-34q0-16-9-30.5T587-306q-71-33-120-43.5T360-360q-58 0-107.5 10.5T132-306q-15 7-23.5 21.5T100-254v34Zm324.5-346.5Q450-592 450-631t-25.5-64.5Q399-721 360-721t-64.5 25.5Q270-670 270-631t25.5 64.5Q321-541 360-541t64.5-25.5ZM360-631Zm0 411Z"/></svg>            
+            <h2 class="text">Are you sure?</h2>
+            <p class="text">You want to delete the user?</p>
+            <div class="twin-btn">
+                <button class="btn approve-delete danger-btn">Yes</button>
+                <button class="btn close-btn">Close</button>
+            </div>
+        </div> -->
+
+        <!-- <div class="popup unsuspend-popup">
+            <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px" fill="green"><path d="M730-400v-130H600v-60h130v-130h60v130h130v60H790v130h-60ZM252-523q-42-42-42-108t42-108q42-42 108-42t108 42q42 42 42 108t-42 108q-42 42-108 42t-108-42ZM40-160v-94q0-35 17.5-63.5T108-360q75-33 133.5-46.5T360-420q60 0 118 13.5T611-360q33 15 51 43t18 63v94H40Zm60-60h520v-34q0-16-9-30.5T587-306q-71-33-120-43.5T360-360q-58 0-107.5 10.5T132-306q-15 7-23.5 21.5T100-254v34Zm324.5-346.5Q450-592 450-631t-25.5-64.5Q399-721 360-721t-64.5 25.5Q270-670 270-631t25.5 64.5Q321-541 360-541t64.5-25.5ZM360-631Zm0 411Z"/></svg>            
+            <h2 class="text">Are you sure?</h2>
+            <p class="text">You want to remove the suspend?</p>
+            <div class="twin-btn">
+                <button class="btn approve-unsuspend positive-btn">Yes</button>
+                <button class="btn close-btn">Close</button>
+            </div>
+        </div> -->
+        
+    </div>
+
 </body>
 </html>
