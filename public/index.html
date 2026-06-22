@@ -16,10 +16,6 @@
         </a>
 
         <div class="right-header">
-            <div class="search-box">
-                <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#000000"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
-                <input class="search" type="text" placeholder="Search products...">
-            </div>
             <a id="cart" href="/carts.html">
                 <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="30px" fill="#e3e3e3"><path d="M231.83-102.64Q210-124.62 210-155.47q0-30.86 21.98-52.7Q253.95-230 284.81-230t52.69 21.98q21.83 21.97 21.83 52.83t-21.97 52.69q-21.98 21.83-52.83 21.83-30.86 0-52.7-21.97Zm400 0Q610-124.62 610-155.47q0-30.86 21.98-52.7Q653.95-230 684.81-230t52.69 21.98q21.83 21.97 21.83 52.83t-21.97 52.69q-21.98 21.83-52.83 21.83-30.86 0-52.7-21.97ZM238.67-734 344-515.33h285.33l120-218.67H238.67ZM206-800.67h589.38q22.98 0 34.97 20.84 11.98 20.83.32 41.83L693.33-490.67q-11 19.34-28.87 30.67-17.87 11.33-39.13 11.33H324l-52 96h487.33V-286H278q-43 0-63-31.83-20-31.84-.33-68.17l60.66-111.33-149.33-316H47.33V-880h121.34L206-800.67Zm138 285.34h285.33H344Z"/></svg>
             </a>
@@ -48,320 +44,101 @@
     </section>
 
     <section class="products">
-        <div class="category">
-            <h1 class="text cat-text">Tech and Gadgets</h1>
-            <div class="nav-container">
-                <div class="nav-btn tech-nav-left">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="60px" viewBox="0 -960 960 960" width="60px" fill="#121824"><path d="M480-354.77 501.23-376l-88.61-88.62h202.76v-30.76H412.62L501.23-584 480-605.23 354.77-480 480-354.77Zm.13 234.77q-74.44 0-139.79-28.34t-114.48-77.42q-49.13-49.08-77.49-114.37Q120-405.42 120-479.87q0-74.67 28.34-140.41 28.34-65.73 77.42-114.36 49.08-48.63 114.37-76.99Q405.42-840 479.87-840q74.67 0 140.41 28.34 65.73 28.34 114.36 76.92 48.63 48.58 76.99 114.26Q840-554.81 840-480.13q0 74.44-28.34 139.79t-76.92 114.48q-48.58 49.13-114.26 77.49Q554.81-120 480.13-120Zm-.13-30.77q137.38 0 233.31-96.04 95.92-96.04 95.92-233.19 0-137.38-95.92-233.31-95.93-95.92-233.31-95.92-137.15 0-233.19 95.92-96.04 95.93-96.04 233.31 0 137.15 96.04 233.19 96.04 96.04 233.19 96.04ZM480-480Z"/></svg>
-                </div>
-                <div class="nav-btn tech-nav-right">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="60px" viewBox="0 -960 960 960" width="60px" fill="#121824"><path d="M480-354.77 605.23-480 480-605.23 458.77-584l88.61 88.62H344.62v30.76h202.76L458.77-376 480-354.77Zm.13 234.77q-74.44 0-139.79-28.34t-114.48-77.42q-49.13-49.08-77.49-114.37Q120-405.42 120-479.87q0-74.67 28.34-140.41 28.34-65.73 77.42-114.36 49.08-48.63 114.37-76.99Q405.42-840 479.87-840q74.67 0 140.41 28.34 65.73 28.34 114.36 76.92 48.63 48.58 76.99 114.26Q840-554.81 840-480.13q0 74.44-28.34 139.79t-76.92 114.48q-48.58 49.13-114.26 77.49Q554.81-120 480.13-120Zm-.13-30.77q137.38 0 233.31-96.04 95.92-96.04 95.92-233.19 0-137.38-95.92-233.31-95.93-95.92-233.31-95.92-137.15 0-233.19 95.92-96.04 95.93-96.04 233.31 0 137.15 96.04 233.19 96.04 96.04 233.19 96.04ZM480-480Z"/></svg>
-                </div>
+        <div class="utility-section">
+            <div class="category-selection">
+                <h2 class="text" style="margin-bottom: 10px;">Categories</h2>
+                <h3 class="text cat-option clickable tec">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M360-120H200q-33 0-56.5-23.5T120-200v-280q0-75 28.5-140.5t77-114q48.5-48.5 114-77T480-840q75 0 140.5 28.5t114 77q48.5 48.5 77 114T840-480v280q0 33-23.5 56.5T760-120H600v-320h160v-40q0-117-81.5-198.5T480-760q-117 0-198.5 81.5T200-480v40h160v320Zm-80-240h-80v160h80v-160Zm400 0v160h80v-160h-80Zm-400 0h-80 80Zm400 0h80-80Z"/></svg>
+                    Text and Gadgets
+                </h3>
+                <h3 class="text cat-option clickable">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m240-522-40 22q-14 8-30 4t-24-18L66-654q-8-14-4-30t18-24l230-132h70q9 0 14.5 5.5T400-820v20q0 33 23.5 56.5T480-720q33 0 56.5-23.5T560-800v-20q0-9 5.5-14.5T580-840h70l230 132q14 8 18 24t-4 30l-80 140q-8 14-23.5 17.5T760-501l-40-20v361q0 17-11.5 28.5T680-120H280q-17 0-28.5-11.5T240-160v-362Zm80-134v456h320v-456l124 68 42-70-172-100q-15 51-56.5 84.5T480-640q-56 0-97.5-33.5T326-758L154-658l42 70 124-68Zm160 177Z"/></svg>
+                    Fashion
+                </h3>
+                <h3 class="text cat-option clickable">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M320-640v-120h80v120h-80Zm0 360v-200h80v200h-80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h480q33 0 56.5 23.5T800-800v640q0 33-23.5 56.5T720-80H240Zm0-80h480v-360H240v360Zm0-440h480v-200H240v200Z"/></svg>
+                    Home and Kitchen
+                </h3>
+                <h3 class="text cat-option clickable">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M224-288q45-35 70.5-85T320-480q0-57-25.5-107T224-672q-31 42-47.5 91T160-480q0 52 16.5 101t47.5 91Zm362.5 110.5Q638-195 680-230q-57-46-88.5-111.5T560-480q0-73 31.5-138.5T680-730q-42-35-93.5-52.5T480-800q-55 0-106.5 17.5T280-730q57 46 88.5 111.5T400-480q0 73-31.5 138.5T280-230q42 35 93.5 52.5T480-160q55 0 106.5-17.5ZM736-288q31-42 47.5-91T800-480q0-52-16.5-101T736-672q-45 35-70.5 85T640-480q0 57 25.5 107t70.5 85ZM480-480ZM324-111.5Q251-143 197-197t-85.5-127Q80-397 80-480t31.5-156Q143-709 197-763t127-85.5Q397-880 480-880t156 31.5Q709-817 763-763t85.5 127Q880-563 880-480t-31.5 156Q817-251 763-197t-127 85.5Q563-80 480-80t-156-31.5Z"/></svg>
+                    Sports and Outdoors
+                </h3>
             </div>
         </div>
-        <div class="items">
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-        </div>
-        </br>
-        <!--  -->
-        <div class="category">
-            <h1 class="text cat-text">Fashion and Cloth</h1>
-            <div class="nav-container">
-                <div class="nav-btn fashion-nav-left">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="60px" viewBox="0 -960 960 960" width="60px" fill="#121824"><path d="M480-354.77 501.23-376l-88.61-88.62h202.76v-30.76H412.62L501.23-584 480-605.23 354.77-480 480-354.77Zm.13 234.77q-74.44 0-139.79-28.34t-114.48-77.42q-49.13-49.08-77.49-114.37Q120-405.42 120-479.87q0-74.67 28.34-140.41 28.34-65.73 77.42-114.36 49.08-48.63 114.37-76.99Q405.42-840 479.87-840q74.67 0 140.41 28.34 65.73 28.34 114.36 76.92 48.63 48.58 76.99 114.26Q840-554.81 840-480.13q0 74.44-28.34 139.79t-76.92 114.48q-48.58 49.13-114.26 77.49Q554.81-120 480.13-120Zm-.13-30.77q137.38 0 233.31-96.04 95.92-96.04 95.92-233.19 0-137.38-95.92-233.31-95.93-95.92-233.31-95.92-137.15 0-233.19 95.92-96.04 95.93-96.04 233.31 0 137.15 96.04 233.19 96.04 96.04 233.19 96.04ZM480-480Z"/></svg>
-                </div>
-                <div class="nav-btn fashion-nav-right">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="60px" viewBox="0 -960 960 960" width="60px" fill="#121824"><path d="M480-354.77 605.23-480 480-605.23 458.77-584l88.61 88.62H344.62v30.76h202.76L458.77-376 480-354.77Zm.13 234.77q-74.44 0-139.79-28.34t-114.48-77.42q-49.13-49.08-77.49-114.37Q120-405.42 120-479.87q0-74.67 28.34-140.41 28.34-65.73 77.42-114.36 49.08-48.63 114.37-76.99Q405.42-840 479.87-840q74.67 0 140.41 28.34 65.73 28.34 114.36 76.92 48.63 48.58 76.99 114.26Q840-554.81 840-480.13q0 74.44-28.34 139.79t-76.92 114.48q-48.58 49.13-114.26 77.49Q554.81-120 480.13-120Zm-.13-30.77q137.38 0 233.31-96.04 95.92-96.04 95.92-233.19 0-137.38-95.92-233.31-95.93-95.92-233.31-95.92-137.15 0-233.19 95.92-96.04 95.93-96.04 233.31 0 137.15 96.04 233.19 96.04 96.04 233.19 96.04ZM480-480Z"/></svg>
+        <div class="item-section">
+            <div class="cat-search">
+                <h1 class="text cat-text">Tech and Gadgets</h1>
+                <div class="search-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#000000"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+                    <input class="search" type="text" placeholder="Search products...">
                 </div>
             </div>
-        </div>
-        <div class="items">
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-        </div>
-        </br>
-        <!--  -->
-        <div class="category">
-            <h1 class="text cat-text">Home and Kitchen</h1>
-            <div class="nav-container">
-                <div class="nav-btn kitchen-nav-left">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="60px" viewBox="0 -960 960 960" width="60px" fill="#121824"><path d="M480-354.77 501.23-376l-88.61-88.62h202.76v-30.76H412.62L501.23-584 480-605.23 354.77-480 480-354.77Zm.13 234.77q-74.44 0-139.79-28.34t-114.48-77.42q-49.13-49.08-77.49-114.37Q120-405.42 120-479.87q0-74.67 28.34-140.41 28.34-65.73 77.42-114.36 49.08-48.63 114.37-76.99Q405.42-840 479.87-840q74.67 0 140.41 28.34 65.73 28.34 114.36 76.92 48.63 48.58 76.99 114.26Q840-554.81 840-480.13q0 74.44-28.34 139.79t-76.92 114.48q-48.58 49.13-114.26 77.49Q554.81-120 480.13-120Zm-.13-30.77q137.38 0 233.31-96.04 95.92-96.04 95.92-233.19 0-137.38-95.92-233.31-95.93-95.92-233.31-95.92-137.15 0-233.19 95.92-96.04 95.93-96.04 233.31 0 137.15 96.04 233.19 96.04 96.04 233.19 96.04ZM480-480Z"/></svg>
+            <div class="items">
+                <div class="item-container">
+                    <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
+                    <h2 class="text item-title">Headphone X21</h2>
+                    <h2 class="text price">$24</h2>
+                    <p class="text">This is the product description...</p>
+                    <button class="btn item-btn">Add to cart</button>
                 </div>
-                <div class="nav-btn kitchen-nav-right">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="60px" viewBox="0 -960 960 960" width="60px" fill="#121824"><path d="M480-354.77 605.23-480 480-605.23 458.77-584l88.61 88.62H344.62v30.76h202.76L458.77-376 480-354.77Zm.13 234.77q-74.44 0-139.79-28.34t-114.48-77.42q-49.13-49.08-77.49-114.37Q120-405.42 120-479.87q0-74.67 28.34-140.41 28.34-65.73 77.42-114.36 49.08-48.63 114.37-76.99Q405.42-840 479.87-840q74.67 0 140.41 28.34 65.73 28.34 114.36 76.92 48.63 48.58 76.99 114.26Q840-554.81 840-480.13q0 74.44-28.34 139.79t-76.92 114.48q-48.58 49.13-114.26 77.49Q554.81-120 480.13-120Zm-.13-30.77q137.38 0 233.31-96.04 95.92-96.04 95.92-233.19 0-137.38-95.92-233.31-95.93-95.92-233.31-95.92-137.15 0-233.19 95.92-96.04 95.93-96.04 233.31 0 137.15 96.04 233.19 96.04 96.04 233.19 96.04ZM480-480Z"/></svg>
+                
+                <div class="item-container">
+                    <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
+                    <h2 class="text item-title">Headphone X21</h2>
+                    <h2 class="text price">$24</h2>
+                    <p class="text">This is the product description...</p>
+                    <button class="btn item-btn">Add to cart</button>
+                </div>
+                
+                <div class="item-container">
+                    <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
+                    <h2 class="text item-title">Headphone X21</h2>
+                    <h2 class="text price">$24</h2>
+                    <p class="text">This is the product description...</p>
+                    <button class="btn item-btn">Add to cart</button>
+                </div>
+                
+                <div class="item-container">
+                    <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
+                    <h2 class="text item-title">Headphone X21</h2>
+                    <h2 class="text price">$24</h2>
+                    <p class="text">This is the product description...</p>
+                    <button class="btn item-btn">Add to cart</button>
+                </div>
+                
+                <div class="item-container">
+                    <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
+                    <h2 class="text item-title">Headphone X21</h2>
+                    <h2 class="text price">$24</h2>
+                    <p class="text">This is the product description...</p>
+                    <button class="btn item-btn">Add to cart</button>
+                </div>
+                
+                <div class="item-container">
+                    <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
+                    <h2 class="text item-title">Headphone X21</h2>
+                    <h2 class="text price">$24</h2>
+                    <p class="text">This is the product description...</p>
+                    <button class="btn item-btn">Add to cart</button>
+                </div>
+                
+                <div class="item-container">
+                    <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
+                    <h2 class="text item-title">Headphone X21</h2>
+                    <h2 class="text price">$24</h2>
+                    <p class="text">This is the product description...</p>
+                    <button class="btn item-btn">Add to cart</button>
+                </div>
+                
+                <div class="item-container">
+                    <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
+                    <h2 class="text item-title">Headphone X21</h2>
+                    <h2 class="text price">$24</h2>
+                    <p class="text">This is the product description...</p>
+                    <button class="btn item-btn">Add to cart</button>
                 </div>
             </div>
         </div>
-        <div class="items">
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-        </div>
-        <!--  -->
-        </br>
-        <div class="category">
-            <h1 class="text cat-text">Sports and Outdoor</h1>
-            <div class="nav-container">
-                <div class="nav-btn sport-nav-left">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="60px" viewBox="0 -960 960 960" width="60px" fill="#121824"><path d="M480-354.77 501.23-376l-88.61-88.62h202.76v-30.76H412.62L501.23-584 480-605.23 354.77-480 480-354.77Zm.13 234.77q-74.44 0-139.79-28.34t-114.48-77.42q-49.13-49.08-77.49-114.37Q120-405.42 120-479.87q0-74.67 28.34-140.41 28.34-65.73 77.42-114.36 49.08-48.63 114.37-76.99Q405.42-840 479.87-840q74.67 0 140.41 28.34 65.73 28.34 114.36 76.92 48.63 48.58 76.99 114.26Q840-554.81 840-480.13q0 74.44-28.34 139.79t-76.92 114.48q-48.58 49.13-114.26 77.49Q554.81-120 480.13-120Zm-.13-30.77q137.38 0 233.31-96.04 95.92-96.04 95.92-233.19 0-137.38-95.92-233.31-95.93-95.92-233.31-95.92-137.15 0-233.19 95.92-96.04 95.93-96.04 233.31 0 137.15 96.04 233.19 96.04 96.04 233.19 96.04ZM480-480Z"/></svg>
-                </div>
-                <div class="nav-btn sport-nav-right">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="60px" viewBox="0 -960 960 960" width="60px" fill="#121824"><path d="M480-354.77 605.23-480 480-605.23 458.77-584l88.61 88.62H344.62v30.76h202.76L458.77-376 480-354.77Zm.13 234.77q-74.44 0-139.79-28.34t-114.48-77.42q-49.13-49.08-77.49-114.37Q120-405.42 120-479.87q0-74.67 28.34-140.41 28.34-65.73 77.42-114.36 49.08-48.63 114.37-76.99Q405.42-840 479.87-840q74.67 0 140.41 28.34 65.73 28.34 114.36 76.92 48.63 48.58 76.99 114.26Q840-554.81 840-480.13q0 74.44-28.34 139.79t-76.92 114.48q-48.58 49.13-114.26 77.49Q554.81-120 480.13-120Zm-.13-30.77q137.38 0 233.31-96.04 95.92-96.04 95.92-233.19 0-137.38-95.92-233.31-95.93-95.92-233.31-95.92-137.15 0-233.19 95.92-96.04 95.93-96.04 233.31 0 137.15 96.04 233.19 96.04 96.04 233.19 96.04ZM480-480Z"/></svg>
-                </div>
-            </div>
-        </div>
-        <div class="items">
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-            <div class="item-container">
-                <img class="item-image" src="./images/Headphone.webp" alt="Headphone image">
-                <h2 class="text item-title">Headphone X21</h2>
-                <h2 class="text price">$24</h2>
-                <p class="text">This is the product description...</p>
-                <button class="btn item-btn">Add to cart</button>
-            </div>
-            
-        </div>
-        <!--  -->
         
     </section>
 
@@ -388,6 +165,5 @@
             <p class="text">All rights Reserved.</p>
         </div>
     </footer>
-    <script src="./server.js"></script>
 </body>
 </html>
