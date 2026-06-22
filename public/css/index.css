@@ -21,6 +21,25 @@ header {
     font-family: "Dancing Script", serif;
     color: var(--bg-color);
 }
+.success-popup-container {
+    position: fixed;
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 2000;
+}
+.success-popup {
+    padding: 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: white;
+    box-shadow: 0 0 5px rgb(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
 
 /* Start of hero section */
 .right-header {
@@ -163,23 +182,6 @@ footer {
     top: 20px;
 }
 
-.cat-search {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
-    background-color: white;
-    padding: 20px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 0 5px rgb(0, 0, 0, 0.3);
-    border-radius: 10px;
-}
-
-.item-section {
-    flex: 1;
-}
-
 .cat-text {
     color: var(--theme-color) !important;
     font-family: sans-serif;
@@ -198,6 +200,23 @@ footer {
     font-weight: 100;
     border-radius: 5px;
     padding: 10px !important;
+}
+
+.cat-search {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    background-color: white;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 0 5px rgb(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.item-section {
+    flex: 1;
 }
 
 .items {
