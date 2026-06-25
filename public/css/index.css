@@ -21,15 +21,9 @@ header {
     font-family: "Dancing Script", serif;
     color: var(--bg-color);
 }
-.success-popup-container {
-    position: fixed;
-    margin-top: 100px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    z-index: 2000;
-}
+
 .success-popup {
+    position: fixed;
     padding: 10px;
     font-family: sans-serif;
     font-weight: bold;
@@ -39,6 +33,10 @@ header {
     background-color: white;
     box-shadow: 0 0 5px rgb(0, 0, 0, 0.3);
     border-radius: 10px;
+    width: 11%;
+    margin-top: 100px;
+    margin-left: 44.5%;
+    z-index: 2000;
 }
 
 /* Start of hero section */
@@ -188,7 +186,7 @@ footer {
     font-size: 2rem;
 }
 
-.tec {
+.cat-option.active {
     background-color: #ff4b2b;
 }
 
@@ -228,23 +226,24 @@ footer {
     margin-left: 5%;
 }
 
-.item-container {
+.item {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     padding: 15px;
     background-color: white;
     border-radius: 20px;
     box-shadow: 5px 5px 20px 5px rgb(27, 9, 18, 0.17);
+    min-width: 215px;
 }
 
-.item-container:hover {
+.item:hover {
     transform: scale(0.97);
     box-shadow: 5px 5px 30px 20px rgb(27, 9, 18, 0.17);
     cursor: pointer;
 }
 
-.item-container:active {
+.item:active {
     transform: scale(0.95);
 }
 
@@ -347,4 +346,9 @@ footer {
     display: flex;
     align-items: center;
     gap: 15px;
+}
+
+.msg {
+    text-align: center;
+    font-size: 1.2rem;
 }
