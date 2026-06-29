@@ -11,7 +11,14 @@ body {
     gap: 50px;
 }
 
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .cart-item-container {
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     background-color: white;
@@ -43,12 +50,13 @@ body {
 }
 
 .quantity {
-    font-size: 3rem;
+    font-size: 2rem;
     font-family: sans-serif;
 }
 
-.quantity-btn {
-    padding: 5px;
+.minus-btn, .plus-btn {
+    font-size: 2rem;
+    padding: 0px 15px !important;
 }
 
 .price {
@@ -83,6 +91,11 @@ body {
 
 .checkout-btn {
     background-color: #ff4b2b;
+}
+
+.checkout-btn.disabled {
+    background-color: grey;
+    pointer-events: none;
 }
 
 .checkout-info {

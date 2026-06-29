@@ -9,31 +9,32 @@
 </head>
 <body>
     <section class="main">
-        <form action="">
+        <form class="reg-form">
             <h1 class="form-title">Register</h1>
 
             <div class="form-item">
                 <label for="fname" class="field">Full Name</label>
-                <input type="text" name="fname" id="fname">
+                <input type="text" name="fname" required id="fname">
             </div>
             
             <div class="form-item">
                 <label for="email" class="field">Email</label>
-                <input type="text" name="email" id="email">
+                <input type="email" name="email" required id="email">
             </div>
             
             <div class="form-item">
                 <label for="password" class="field">Password</label>
-                <input type="text" name="password" id="password">
+                <input type="text" name="password" required id="password">
             </div>
             
             <div class="form-item">
                 <label for="confirm-password" class="field">Confirm Password</label>
-                <input type="text" name="confirm-password" id="confirm-password">
+                <input type="text" name="confirm-password" required id="confirm-password">
             </div>
-            <p class="text error-msg">This is error message</p>
+            <p class="text msg"></p>
             <button class="btn">Register</button>
         </form>
     </section>
+    <script src="/js/register.js"></script>
 </body>
 </html>

@@ -22,12 +22,12 @@ header {
     color: var(--bg-color);
 }
 
-.success-popup {
+.cart-popup {
     position: fixed;
     padding: 10px;
     font-family: sans-serif;
     font-weight: bold;
-    display: flex;
+    display: none;
     align-items: center;
     gap: 5px;
     background-color: white;
@@ -37,6 +37,18 @@ header {
     margin-top: 100px;
     margin-left: 44.5%;
     z-index: 2000;
+}
+
+.profile-popup {
+    position: absolute;
+    top: 88.33px;
+    right: 20px;
+    z-index: 2000;
+    display: none;
+}
+
+.profile-popup.active {
+    display: block;
 }
 
 /* Start of hero section */
@@ -243,10 +255,6 @@ footer {
     cursor: pointer;
 }
 
-.item:active {
-    transform: scale(0.95);
-}
-
 .price {
     font-size: 1.5rem;
 }
@@ -261,7 +269,7 @@ footer {
     align-self: center;
 }
 
-.item-btn {
+.add-to-cart-btn {
     background-color: #ff4b2b !important;
 }
 

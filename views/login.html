@@ -9,28 +9,29 @@
 </head>
 <body>
     <section class="main">
-        <form action="">
+        <form class="login-form">
             <h1 class="form-title">Login</h1>
 
             <div class="form-item">
                 <label for="email" class="field">Email</label>
-                <input type="text" name="email" id="email">
+                <input type="text" name="email" required id="email">
             </div>
             
             <div class="form-item">
                 <label for="password" class="field">Password</label>
-                <input type="text" name="password" id="password">
+                <input type="text" name="password" required id="password">
             </div>
 
             <p class="text">
                 do not have account?
-                <a href="/register.html">Register</a>
+                <a href="/register">Register</a>
             </p>
             
-            <p class="text error-msg">This is error message</p>
+            <p class="text msg"></p>
             
             <button class="btn">Login</button>
         </form>
     </section>
+    <script src="/js/login.js"></script>
 </body>
 </html>

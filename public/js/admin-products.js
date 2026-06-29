@@ -7,6 +7,9 @@ const msg = document.querySelector(".msg");
 const itemContainer = document.querySelector(".items");
 const itemForm = document.querySelector(".item-form");
 const searchBox = document.querySelector(".search");
+const logoutBtn = document.querySelector(".logout-btn");
+const totalProducts = document.querySelector(".total-products");
+const totalSales = document.querySelector(".total-sales");
 let itemFormTitle = document.querySelector(".item-form-title");
 let itemId;
 
@@ -18,8 +21,32 @@ const price = document.querySelector(".price-field");
 const stock = document.querySelector(".stock-field");
 const image = document.querySelector(".image-field");
 
+logoutBtn.addEventListener("click", async (e) => {
+  const response = await fetch("/logout", {
+    method: "GET",
+  });
+
+  const result = await response.json();
+  if (result.success) {
+    window.location.href = "/login";
+  }
+});
+
+async function fetchStat() {
+  const response = await fetch("/api/get-product-stat", { method: "GET" });
+  const result = await response.json();
+
+  if (result.success) {
+    totalProducts.textContent = result.stat.totalProduct;
+    totalSales.textContent = "$" + result.stat.totalSales;
+  } else {
+    totalProducts.textContent = "0";
+    totalSales.textContent = "$0";
+  }
+}
+
 function displayItems(result) {
-  if (result) {
+  if (result && result.length != 0) {
     const itemContent = result.map(
       (item) => `
       <div class="item-list">
@@ -36,7 +63,7 @@ function displayItems(result) {
         </div>
       </div>
     `,
-    );
+    ).join("");
     itemContainer.innerHTML = itemContent;
   }
 
@@ -58,7 +85,7 @@ function displayItems(result) {
         response &&
         response.headers.get("content-type").includes("application/json")
       ) {
-        const result = (await response.json())[0];
+        const result = (await response.json()).data[0];
 
         title.value = result.title;
         category.value = result.category;
@@ -89,6 +116,7 @@ function displayItems(result) {
     if (message == "success") {
       modal.style.display = "none";
       fetchProducts();
+      fetchStat();
     } else {
       console.log("Error deleting the item");
     }
@@ -109,8 +137,6 @@ async function fetchProducts() {
     console.log("Error fetcing the products");
   }
 }
-
-fetchProducts();
 
 searchBox.addEventListener("input", async (e) => {
   const value = e.currentTarget.value;
@@ -167,6 +193,7 @@ if (itemForm) {
           modal.style.display = "none";
           msg.textContent = "";
           fetchProducts();
+          fetchStat();
         }, 1000);
       } else {
         msg.style.color = "red";
@@ -186,6 +213,7 @@ if (itemForm) {
           modal.style.display = "none";
           msg.textContent = "";
           fetchProducts();
+          fetchStat();
         }, 1000);
       } else {
         msg.style.color = "red";
@@ -194,3 +222,6 @@ if (itemForm) {
     }
   });
 }
+
+fetchStat();
+fetchProducts();

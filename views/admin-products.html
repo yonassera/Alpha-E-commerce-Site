@@ -17,18 +17,24 @@
     <div class="main">
         <div class="panel-elements">
             <div class="side-panel">
-                <h2 class="text" style="text-align: center; margin: 10px;">
+                <h2 class="text clickable" onclick="window.location.href = '/admin-dashboard'" style="text-align: center; margin: 10px;">
                     Admin Panel
                 </h2>
-                <br>
-                <h3 class="text options product-option" onclick="window.location.href = '/admin-products.html' ">
+                <br> 
+                <h3 class="text options" onclick="window.location.href = '/' ">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
+                    Home
+                </h3>
+                <h3 class="text options product-option" onclick="window.location.href = '/admin-dashboard' ">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#f2f5f8"><path d="M180-674v494h600v-494H640v342l-160-80-160 80v-342H180Zm0 554q-24.75 0-42.37-17.63Q120-155.25 120-180v-529q0-9.88 3-19.06 3-9.18 9-16.94l52-71q8-11 20.94-17.5Q217.88-840 232-840h495q14.12 0 27.06 6.5T775-816l53 71q6 7.76 9 16.94 3 9.18 3 19.06v529q0 24.75-17.62 42.37Q804.75-120 780-120H180Zm17-614h565l-36.41-46H233l-36 46Zm183 60v245l100-50 100 50v-245H380Zm-200 0h600-600Z"/></svg>
                     Products
                 </h3>
-                <h3 class="text options user-option" onclick="window.location.href = '/admin-users.html' ">
+                
+                <h3 class="text options user-option" onclick="window.location.href = '/admin-users' ">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#f2f5f8"><path d="M38-160v-94q0-35 18-63.5t50-42.5q73-32 131.5-46T358-420q62 0 120 14t131 46q32 14 50.5 42.5T678-254v94H38Zm700 0v-94q0-63-32-103.5T622-423q69 8 130 23.5t99 35.5q33 19 52 47t19 63v94H738ZM250-523q-42-42-42-108t42-108q42-42 108-42t108 42q42 42 42 108t-42 108q-42 42-108 42t-108-42Zm426 0q-42 42-108 42-11 0-24.5-1.5T519-488q24-25 36.5-61.5T568-631q0-45-12.5-79.5T519-774q11-3 24.5-5t24.5-2q66 0 108 42t42 108q0 66-42 108ZM98-220h520v-34q0-16-9.5-31T585-306q-72-32-121-43t-106-11q-57 0-106.5 11T130-306q-14 6-23 21t-9 31v34Zm324.5-346.5Q448-592 448-631t-25.5-64.5Q397-721 358-721t-64.5 25.5Q268-670 268-631t25.5 64.5Q319-541 358-541t64.5-25.5ZM358-220Zm0-411Z"/></svg>
                     Users
                 </h3>
+
             </div>
             <button class="btn logout-btn danger-btn">Logout</button>
         </div>
@@ -44,7 +50,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill="blue"><path d="M180-674v494h600v-494H640v342l-160-80-160 80v-342H180Zm0 554q-24.75 0-42.37-17.63Q120-155.25 120-180v-529q0-9.88 3-19.06 3-9.18 9-16.94l52-71q8-11 20.94-17.5Q217.88-840 232-840h495q14.12 0 27.06 6.5T775-816l53 71q6 7.76 9 16.94 3 9.18 3 19.06v529q0 24.75-17.62 42.37Q804.75-120 780-120H180Zm17-614h565l-36.41-46H233l-36 46Zm183 60v245l100-50 100 50v-245H380Zm-200 0h600-600Z"/></svg>
                     <div class="stat">
                         <p class="text">Total Products</p>
-                        <h1 class="text">1200</h1>
+                        <h1 class="text total-products"></h1>
                         <p class="text">Available in inventory</p>
                     </div>
                 </div>
@@ -52,7 +58,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill="green"><path d="M451-120v-84q-57-10-93.5-43.5T305-332l56-23q17 48 49 71.5t77 23.5q48 0 79-24t31-66q0-44-27.5-68T466-467q-72-23-107.5-61T323-623q0-55 35.5-92t92.5-42v-83h60v83q45 5 77.5 29.5T638-665l-56 24q-14-32-37.5-46.5T483-702q-46 0-73 21t-27 57q0 38 30 61.5T524-514q68 21 100.5 60.5T657-354q0 63-37 101.5T511-203v83h-60Z"/></svg>
                     <div class="stat">
                         <p class="text">Total Sales</p>
-                        <h1 class="text">$1200</h1>
+                        <h1 class="text total-sales"></h1>
                         <p class="text">Total revenue</p>
                     </div>
                 </div>

@@ -17,15 +17,15 @@
     <div class="main">
         <div class="panel-elements">
             <div class="side-panel">
-                <h2 class="text" style="text-align: center; margin: 10px;">
+                <h2 class="text clickable" onclick="window.location.href = '/admin-users' " style="text-align: center; margin: 10px;">
                     Admin Panel
                 </h2>
                 <br>
-                <h3 class="text options product-option" onclick="window.location.href = '/admin-products.html' ">
+                <h3 class="text options product-option" onclick="window.location.href = '/admin-dashboard' ">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#f2f5f8"><path d="M180-674v494h600v-494H640v342l-160-80-160 80v-342H180Zm0 554q-24.75 0-42.37-17.63Q120-155.25 120-180v-529q0-9.88 3-19.06 3-9.18 9-16.94l52-71q8-11 20.94-17.5Q217.88-840 232-840h495q14.12 0 27.06 6.5T775-816l53 71q6 7.76 9 16.94 3 9.18 3 19.06v529q0 24.75-17.62 42.37Q804.75-120 780-120H180Zm17-614h565l-36.41-46H233l-36 46Zm183 60v245l100-50 100 50v-245H380Zm-200 0h600-600Z"/></svg>
                     Products
                 </h3>
-                <h3 class="text options user-option" onclick="window.location.href = '/admin-users.html' ">
+                <h3 class="text options user-option" onclick="window.location.href = '/admin-users' ">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#f2f5f8"><path d="M38-160v-94q0-35 18-63.5t50-42.5q73-32 131.5-46T358-420q62 0 120 14t131 46q32 14 50.5 42.5T678-254v94H38Zm700 0v-94q0-63-32-103.5T622-423q69 8 130 23.5t99 35.5q33 19 52 47t19 63v94H738ZM250-523q-42-42-42-108t42-108q42-42 108-42t108 42q42 42 42 108t-42 108q-42 42-108 42t-108-42Zm426 0q-42 42-108 42-11 0-24.5-1.5T519-488q24-25 36.5-61.5T568-631q0-45-12.5-79.5T519-774q11-3 24.5-5t24.5-2q66 0 108 42t42 108q0 66-42 108ZM98-220h520v-34q0-16-9.5-31T585-306q-72-32-121-43t-106-11q-57 0-106.5 11T130-306q-14 6-23 21t-9 31v34Zm324.5-346.5Q448-592 448-631t-25.5-64.5Q397-721 358-721t-64.5 25.5Q268-670 268-631t25.5 64.5Q319-541 358-541t64.5-25.5ZM358-220Zm0-411Z"/></svg>
                     Users
                 </h3>
@@ -43,21 +43,21 @@
                     <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill="rgb(2, 2, 65)"><path d="M38-160v-94q0-35 18-63.5t50-42.5q73-32 131.5-46T358-420q62 0 120 14t131 46q32 14 50.5 42.5T678-254v94H38Zm700 0v-94q0-63-32-103.5T622-423q69 8 130 23.5t99 35.5q33 19 52 47t19 63v94H738ZM250-523q-42-42-42-108t42-108q42-42 108-42t108 42q42 42 42 108t-42 108q-42 42-108 42t-108-42Zm426 0q-42 42-108 42-11 0-24.5-1.5T519-488q24-25 36.5-61.5T568-631q0-45-12.5-79.5T519-774q11-3 24.5-5t24.5-2q66 0 108 42t42 108q0 66-42 108ZM98-220h520v-34q0-16-9.5-31T585-306q-72-32-121-43t-106-11q-57 0-106.5 11T130-306q-14 6-23 21t-9 31v34Zm324.5-346.5Q448-592 448-631t-25.5-64.5Q397-721 358-721t-64.5 25.5Q268-670 268-631t25.5 64.5Q319-541 358-541t64.5-25.5ZM358-220Zm0-411Z"/></svg>                    
                     <div class="stat">
                         <p class="text">Total Customers</p>
-                        <h1 class="text">1200</h1>
+                        <h1 class="text total-customers">0</h1>
                     </div>
                 </div>
                 <div class="stat-container">
                     <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="red"><path d="M523-523Zm-86 86Zm154.5 278.5Q646-177 691-212q-47-33-100.5-53.5T480-286q-57 0-110.5 20.5T269-212q45 35 99.5 53.5T480-140q57 0 111.5-18.5ZM566-479l-43-43q17-11 25.5-28t8.5-37q0-32-22.5-54.5T480-664q-20 0-37 8.5T415-630l-43-43q20-25 48-38t60-13q57 0 97 40t40 97q0 32-13 60t-38 48Zm236 236-41-41q29-44 44-93.5T820-480q0-142-99-241t-241-99q-53 0-102.5 15T285-760l-42-42q52-38 112.5-58T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 64-20 124.5T802-243ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-64 19.5-124.5T157-716L26-848l43-43L876-84l-43 43-634-633q-30 43-44.5 92.5T140-480q0 62 21.5 119.5T222-255q58-40 123-65.5T480-346q46 0 89.5 11t85.5 31l107 107q-57 57-129.5 87T480-80Z"/></svg>                    
                     <div class="stat">
                         <p class="text">Suspended Customers</p>
-                        <h1 class="text">12</h1>
+                        <h1 class="text suspended-customers">0</h1>
                     </div>
                 </div>
                 <div class="stat-container">
                     <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="rgb(2, 2, 65)"><path d="M480-520q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-60q25 0 42.5-17.5T540-640q0-25-17.5-42.5T480-700q-25 0-42.5 17.5T420-640q0 25 17.5 42.5T480-580ZM240-280v-76q0-26 14-45t46-36q42-22 87-32.5t93-10.5q48 0 93 10.5t87 32.5q32 17 46 36t14 45v76H240Zm147-127q-45 13-87 39v28h360v-28q-42-26-87-39t-93-13q-48 0-93 13Zm480-235q-32-76-91-135t-134-91l23-55q87 36 154 103t104 155l-56 23Zm-774 0-56-23q37-88 103.5-154.5T295-923l23 56q-79 33-135.5 89.5T93-642ZM295-37q-87-36-154-103T37-295l56-24q33 78 90 135.5T319-93l-24 56Zm370 0-23-56q76-32 134.5-90.5T867-318l56 23q-36 87-103 154T665-37ZM480-640Zm93 300h87-360 273Z"/></svg>                    
                     <div class="stat">
                         <p class="text">Acitve Customers</p>
-                        <h1 class="text">1190</h1>
+                        <h1 class="text active-customers">0</h1>
                     </div>
                 </div>
             </div>
@@ -68,12 +68,12 @@
                     <p class="text">A list of registered users</p>
                 </div>
                 
-                <div class="add-search">
-                    <div class="search-box">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#000000"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
-                        <input class="search" type="text" placeholder="Search users...">
-                    </div>
+                
+                <div class="search-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#000000"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+                    <input class="search" type="text" placeholder="Search users...">
                 </div>
+                
                 <div class="item-table">
                     <div class="heading-container">
                         <h3 class="text product-heading">Users</h3>
@@ -81,63 +81,7 @@
                         <h3 class="text price-heading">Actions</h3>
                     </div>
 
-                    <div class="items">
-                        <div class="item-list">
-                            <div class="product-row">
-                                <h3 class="text">Alemu Kassie</h3>
-                            </div>
-                            <h3 class="text category-row">Active</h3>
-                            <div class="actions-row twin-btn">
-                                <button class="btn action-1 suspend-btn danger-btn">Suspend</button>
-                                <button class="btn action-2 delete-btn danger-btn">Delete</button>
-                            </div>
-                        </div>
-
-                        <div class="item-list">
-                            <div class="product-row">
-                            <h3 class="text">Alemu Kassie</h3>
-                            </div>
-                            <h3 class="text category-row">Suspended</h3>
-                            <div class="actions-row twin-btn">
-                                <button class="btn action-1 unsuspend-btn positive-btn">Unsuspend</button>
-                                <button class="btn action-2 delete-btn danger-btn">Delete</button>
-                            </div>
-                        </div>
-
-                        <div class="item-list">
-                            <div class="product-row">
-                            <h3 class="text">Alemu Kassie</h3>
-                            </div>
-                            <h3 class="text category-row">Active</h3>
-                            <div class="actions-row twin-btn">
-                                <button class="btn action-1 suspend-btn danger-btn">Suspend</button>
-                                <button class="btn action-2 delete-btn danger-btn">Delete</button>
-                            </div>
-                        </div>
-
-                        <div class="item-list">
-                            <div class="product-row">
-                            <h3 class="text">Alemu Kassie</h3>
-                            </div>
-                            <h3 class="text category-row">Active</h3>
-                            <div class="actions-row twin-btn">
-                                <button class="btn action-1 suspend-btn danger-btn">Suspend</button>
-                                <button class="btn action-2 delete-btn danger-btn">Delete</button>
-                            </div>
-                        </div>
-                        
-                        <div class="item-list">
-                            <div class="product-row">
-                            <h3 class="text">Alemu Kassie</h3>
-                            </div>
-                            <h3 class="text category-row">Active</h3>
-                            <div class="actions-row twin-btn">
-                                <button class="btn action-1 suspend-btn danger-btn">Suspend</button>
-                                <button class="btn action-2 delete-btn danger-btn">Delete</button>
-                            </div>
-                        </div>
-                        
-                    </div>
+                    <div class="items"></div>
                 </div>
                 
             </div>
@@ -145,7 +89,7 @@
     </div>
 
     <div class="modal">
-        <!-- <div class="popup suspend-popup">
+        <div class="popup suspend-popup">
             <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px" fill="red"><path d="M523-523Zm-86 86Zm154.5 278.5Q646-177 691-212q-47-33-100.5-53.5T480-286q-57 0-110.5 20.5T269-212q45 35 99.5 53.5T480-140q57 0 111.5-18.5ZM566-479l-43-43q17-11 25.5-28t8.5-37q0-32-22.5-54.5T480-664q-20 0-37 8.5T415-630l-43-43q20-25 48-38t60-13q57 0 97 40t40 97q0 32-13 60t-38 48Zm236 236-41-41q29-44 44-93.5T820-480q0-142-99-241t-241-99q-53 0-102.5 15T285-760l-42-42q52-38 112.5-58T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 64-20 124.5T802-243ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-64 19.5-124.5T157-716L26-848l43-43L876-84l-43 43-634-633q-30 43-44.5 92.5T140-480q0 62 21.5 119.5T222-255q58-40 123-65.5T480-346q46 0 89.5 11t85.5 31l107 107q-57 57-129.5 87T480-80Z"/></svg>                    
             <h2 class="text">Are you sure?</h2>
             <p class="text">You want to suspend the user?</p>
@@ -153,9 +97,9 @@
                 <button class="btn approve-suspend danger-btn">Yes</button>
                 <button class="btn close-btn">Close</button>
             </div>
-        </div> -->
+        </div>
 
-        <!-- <div class="popup delete-popup">
+        <div class="popup delete-popup">
             <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px" fill="red"><path d="M648-542v-60h232v60H648Zm-396 19q-42-42-42-108t42-108q42-42 108-42t108 42q42 42 42 108t-42 108q-42 42-108 42t-108-42ZM40-160v-94q0-35 17.5-63.5T108-360q75-33 133.5-46.5T360-420q60 0 118 13.5T611-360q33 15 51 43t18 63v94H40Zm60-60h520v-34q0-16-9-30.5T587-306q-71-33-120-43.5T360-360q-58 0-107.5 10.5T132-306q-15 7-23.5 21.5T100-254v34Zm324.5-346.5Q450-592 450-631t-25.5-64.5Q399-721 360-721t-64.5 25.5Q270-670 270-631t25.5 64.5Q321-541 360-541t64.5-25.5ZM360-631Zm0 411Z"/></svg>            
             <h2 class="text">Are you sure?</h2>
             <p class="text">You want to delete the user?</p>
@@ -163,9 +107,9 @@
                 <button class="btn approve-delete danger-btn">Yes</button>
                 <button class="btn close-btn">Close</button>
             </div>
-        </div> -->
+        </div>
 
-        <!-- <div class="popup unsuspend-popup">
+        <div class="popup unsuspend-popup">
             <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px" fill="green"><path d="M730-400v-130H600v-60h130v-130h60v130h130v60H790v130h-60ZM252-523q-42-42-42-108t42-108q42-42 108-42t108 42q42 42 42 108t-42 108q-42 42-108 42t-108-42ZM40-160v-94q0-35 17.5-63.5T108-360q75-33 133.5-46.5T360-420q60 0 118 13.5T611-360q33 15 51 43t18 63v94H40Zm60-60h520v-34q0-16-9-30.5T587-306q-71-33-120-43.5T360-360q-58 0-107.5 10.5T132-306q-15 7-23.5 21.5T100-254v34Zm324.5-346.5Q450-592 450-631t-25.5-64.5Q399-721 360-721t-64.5 25.5Q270-670 270-631t25.5 64.5Q321-541 360-541t64.5-25.5ZM360-631Zm0 411Z"/></svg>            
             <h2 class="text">Are you sure?</h2>
             <p class="text">You want to remove the suspend?</p>
@@ -173,9 +117,9 @@
                 <button class="btn approve-unsuspend positive-btn">Yes</button>
                 <button class="btn close-btn">Close</button>
             </div>
-        </div> -->
+        </div>
         
     </div>
-
+    <script src="/js/admin-users.js"></script>
 </body>
 </html>
