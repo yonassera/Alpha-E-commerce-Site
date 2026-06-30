@@ -15,10 +15,10 @@ const totalActive = document.querySelector(".active-customers");
 let userId;
 
 async function loadStats() {
-  const response = await fetch("/api/get-user-stat", { method: "GET"});
+  const response = await fetch("/api/get-user-stat", { method: "GET" });
   const result = await response.json();
 
-  if(result.success) {
+  if (result.success) {
     totalCustomers.textContent = result.stat.totalCustomers;
     totalSuspended.textContent = result.stat.totalSuspended;
     totalActive.textContent = result.stat.totalActive;
@@ -55,7 +55,7 @@ approveDelete.addEventListener("click", async (e) => {
 });
 
 approveSuspend.addEventListener("click", async (e) => {
-  const response = await fetch(`/api/suspend-btn/${itemId}`, {
+  const response = await fetch(`/api/suspend-user/${itemId}`, {
     method: "PUT",
   });
   const result = await response.json();
@@ -77,7 +77,7 @@ approveUnsuspend.addEventListener("click", async (e) => {
 });
 
 function displayUsers(result) {
-  if (result && result.data.length != 0) {
+  if (result) {
     const users = result.data
       .map(
         (user) => `
@@ -141,8 +141,6 @@ searchBox.addEventListener("input", async (e) => {
 
     if (result.success) {
       displayUsers(result);
-    } else {
-      console.log("Error in fething search result");
     }
   }
 });

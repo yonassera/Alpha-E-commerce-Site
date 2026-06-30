@@ -336,10 +336,6 @@ footer {
     align-items: center;
 }
 
-.modal.action {
-    display: flex;
-}
-
 .popup {
     border-radius: 20px;
     background-color: white;
@@ -358,5 +354,6 @@ footer {
 
 .msg {
     text-align: center;
+    font-family: sans-serif !important;
     font-size: 1.2rem;
 }

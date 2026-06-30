@@ -29,7 +29,6 @@ regForm.addEventListener("submit", async (e) => {
       window.location.href = "/login";
     }, 1000);
   } else {
-    console.log("Registration failed");
     msgText.style.color = "red";
     msgText.textContent = result.message;
   }

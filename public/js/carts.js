@@ -1,51 +1,7 @@
-const profileName = document.querySelector(".profile-txt");
-const profileBtn = document.querySelector(".profile-btn");
-const profilePopup = document.querySelector(".profile-popup");
-const logoutBtn = document.querySelector(".logout-btn");
 const cartItemContainer = document.querySelector(".cart-items");
 const subTotal = document.querySelector(".price");
 const checkout = document.querySelector(".checkout-btn");
 const modal = document.querySelector(".modal");
-let uname = null;
-
-async function fetchName() {
-  const response = await fetch("/get-user-info", {
-    method: "GET",
-  });
-
-  const result = await response.json();
-
-  if (result.success) {
-    profileName.textContent = result.uname;
-    uname = result.uname;
-    profileBtn.addEventListener("click", (e) => {
-      profilePopup.classList.toggle("active");
-
-      window.addEventListener("click", (e) => {
-        if (
-          !e.target.matches(".logout-btn, .profile-btn, .avatar, .profile-txt")
-        ) {
-          profilePopup.classList.remove("active");
-        }
-      });
-    });
-
-    logoutBtn.addEventListener("click", async (e) => {
-      const response = await fetch("/logout", {
-        method: "GET",
-      });
-
-      const result = await response.json();
-      if (result.success) {
-        window.location.href = "/";
-      }
-    });
-  } else {
-    profileBtn.addEventListener("click", (e) => {
-      window.location.href = "/login";
-    });
-  }
-}
 
 async function estimatedTotal() {
   const response = await fetch("/api/get-cart-subtotal", {
@@ -62,7 +18,10 @@ async function estimatedTotal() {
 }
 
 checkout.addEventListener("click", async (e) => {
-  if (!uname) {
+  const resp = await fetch("/get-user-info", { method: "GET"});
+  const res = await resp.json();
+
+  if (!res.success) {
     window.location.href = "/login";
   }
   const subtotal = await estimatedTotal();
@@ -77,8 +36,6 @@ checkout.addEventListener("click", async (e) => {
         modal.style.display = "none";
       }
     });
-  } else {
-    console.log("Checkout failed");
   }
 });
 
@@ -92,7 +49,7 @@ async function fetchCartItems() {
         (item) => `
         <div class="cart-item-container" data-id="${item.id}">
             <div class="left-cart-info">
-                <svg class="clickable del-item" data-id="${item.id}" xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="red"><path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg>
+                <svg class="clickable del-item" data-id="${item.id}" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="red"><path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg>
                 <img class="item-img" src="${item.img}" alt="Headphone image">
                 <div class="cart-item-info">
                     <h2 class="text">${item.title}</h2>
@@ -174,5 +131,4 @@ async function fetchCartItems() {
   estimatedTotal();
 }
 
-fetchName();
 fetchCartItems();

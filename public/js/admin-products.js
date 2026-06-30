@@ -10,7 +10,7 @@ const searchBox = document.querySelector(".search");
 const logoutBtn = document.querySelector(".logout-btn");
 const totalProducts = document.querySelector(".total-products");
 const totalSales = document.querySelector(".total-sales");
-let itemFormTitle = document.querySelector(".item-form-title");
+const itemFormTitle = document.querySelector(".item-form-title");
 let itemId;
 
 //Form fields
@@ -46,9 +46,10 @@ async function fetchStat() {
 }
 
 function displayItems(result) {
-  if (result && result.length != 0) {
-    const itemContent = result.map(
-      (item) => `
+  if (result) {
+    const itemContent = result
+      .map(
+        (item) => `
       <div class="item-list">
         <div class="product-row">
           <img src="${item.img}" width="60px" alt="">
@@ -63,7 +64,8 @@ function displayItems(result) {
         </div>
       </div>
     `,
-    ).join("");
+      )
+      .join("");
     itemContainer.innerHTML = itemContent;
   }
 
@@ -80,20 +82,16 @@ function displayItems(result) {
       const response = await fetch(`/api/product/${itemId}`, {
         method: "get",
       });
+      const result = await response.json();
 
-      if (
-        response &&
-        response.headers.get("content-type").includes("application/json")
-      ) {
-        const result = (await response.json()).data[0];
+      if (result.success) {
+        const data = result.data[0];
 
-        title.value = result.title;
-        category.value = result.category;
-        description.value = result.description;
-        price.value = result.price;
-        stock.value = result.stock;
-      } else {
-        console.log("Error fetching details for edit");
+        title.value = data.title;
+        category.value = data.category;
+        description.value = data.description;
+        price.value = data.price;
+        stock.value = data.stock;
       }
     });
   });
@@ -112,14 +110,12 @@ function displayItems(result) {
     const response = await fetch(`/api/delete-item/${itemId}`, {
       method: "post",
     });
-    const message = await response.text();
-    if (message == "success") {
+    const result = await response.json();
+    if (result.success) {
       modal.style.display = "none";
       fetchProducts();
       fetchStat();
-    } else {
-      console.log("Error deleting the item");
-    }
+    } 
   });
 }
 
@@ -127,15 +123,11 @@ async function fetchProducts() {
   const response = await fetch("/api/list-all-items", {
     method: "GET",
   });
-  if (
-    response &&
-    response.headers.get("content-type").includes("application/json")
-  ) {
-    const result = await response.json();
-    displayItems(result);
-  } else {
-    console.log("Error fetcing the products");
-  }
+  const result = await response.json();
+
+  if (result.success) {
+    displayItems(result.data);
+  } 
 }
 
 searchBox.addEventListener("input", async (e) => {
@@ -147,12 +139,10 @@ searchBox.addEventListener("input", async (e) => {
     const response = await fetch(`/api/search-item/${value}`, {
       method: "GET",
     });
+    const result = await response.json();
 
-    if (response.headers.get("content-type").includes("application/json")) {
-      const result = await response.json();
-      displayItems(result);
-    } else {
-      console.log("error while fetching");
+    if (result.success) {
+      displayItems(result.data);
     }
   }
 });
@@ -184,8 +174,8 @@ if (itemForm) {
         body: formData,
       });
 
-      const message = await response.text();
-      if (message == "success") {
+      const result = await response.json();
+      if (result.success) {
         msg.style.color = "green";
         msg.textContent = "Successfully Added";
         setTimeout(() => {
@@ -204,8 +194,9 @@ if (itemForm) {
         method: "post",
         body: formData,
       });
-      const message = await response.text();
-      if (message == "success") {
+      const result = await response.json();
+
+      if (result.success) {
         msg.style.color = "green";
         msg.textContent = "Successfully Edited";
         setTimeout(() => {

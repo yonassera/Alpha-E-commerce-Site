@@ -136,6 +136,7 @@ body {
 .product-heading, .product-row {
     flex: 0.3;
     display: flex;
+    gap: 5px;
     align-items: center;
 }
 

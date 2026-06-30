@@ -32,16 +32,22 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "123456",
-  database: "alpha_ecommerce_database",
-});
-db.connect();
+let db;
+try {
+  const pool = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "123456",
+    database: "alpha_ecommerce_database",
+  });
+  db = pool.promise();
+} catch (err) {
+  console.error("Database connection error: " + err.message);
+}
 
+// Routes to serve pages
 app.get("/login", (req, res) => {
-  if (req.session.role) {
+  if (req.session.uid) {
     if (req.session.role === "admin") {
       return res.sendFile(path.join(__dirname, "views", "admin-products.html"));
     } else {
@@ -52,7 +58,7 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/register", (req, res) => {
-  if (req.session.role) {
+  if (req.session.uid) {
     if (req.session.role === "admin") {
       return res.sendFile(path.join(__dirname, "views", "admin-products.html"));
     } else {
@@ -71,7 +77,7 @@ app.get("/carts", (req, res) => {
 });
 
 app.get("/admin-dashboard", (req, res) => {
-  if (req.session.role && req.session.role == "admin") {
+  if (req.session.uid && req.session.role == "admin") {
     res.sendFile(path.join(__dirname, "views", "admin-products.html"));
   } else {
     res.send("Unauthorized access!");
@@ -85,23 +91,99 @@ app.get("/admin-users", (req, res) => {
     res.send("Unauthorized access!");
   }
 });
+////////////////////////////////////////////////////////////////////////////
 
-app.get("/api/get-cart-items", async (req, res) => {
-  if (req.session.cart && req.session.cart.length != 0) {
-    const items = [];
-    const itemsId = req.session.cart.map((cart) => cart.itemId);
-    const result = await db
-      .promise()
-      .query(`select * from items where id in (${[...itemsId]})`);
+// User related operations
+app.post("/api/register-user", upload.none(), async (req, res) => {
+  if (req.session.uid && req.session.role === "admin") {
+    try {
+      const { fname, email, password } = req.body;
+      const hashedPassword = await bcrypt.hash(password, 10);
 
-    result[0].forEach((item, index) => {
-      item.quantity = req.session.cart[index].quantity;
-      items.push(item);
-    });
+      await db.execute(
+        "insert into users (fullname, email, password) values (?, ?, ?)",
+        [fname, email, hashedPassword],
+      );
+      res.json({ success: true, message: "Successfully Added" });
+    } catch (err) {
+      res.json({ success: false, message: "Something went wrong!" });
+    }
+  }
+  res.send("Unauthorized");
+});
 
-    res.json({ success: true, items: items });
+app.post("/api/login", upload.none(), async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    let user = null;
+
+    const [result] = await db.execute(
+      "select * from users where email = ? LIMIT 1",
+      [email],
+    );
+    user = result[0] ?? null;
+
+    if (!user) {
+      return res.json({
+        success: false,
+        message: "Email is not registered!",
+      });
+    }
+
+    const valid = await bcrypt.compare(password, user.password);
+
+    if (!valid) {
+      return res.json({
+        success: false,
+        message: "Password is not correct!",
+      });
+    } else {
+      if (user.isSuspended) {
+        return res.json({
+          success: false,
+          message: "Sorry, your account is suspended!",
+        });
+      }
+      req.session.uid = user.id;
+      req.session.fname = user.fullname;
+      req.session.role = user.role;
+      req.session.isSuspended = user.isSuspended;
+
+      req.session.save((err) => {
+        if (!err) {
+          return res.json({
+            success: true,
+            redirectUrl: result[0].role == "admin" ? "/admin-dashboard" : "/",
+          });
+        }
+      });
+    }
+  } catch (error) {
+    return res.json({ success: false, message: "Something went wrong!" });
+  }
+});
+
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (!err) {
+      res.clearCookie("connect.sid");
+      return res.json({ success: true });
+    }
+  });
+});
+
+app.get("/api/list-all-users", async (req, res) => {
+  if (req.session.uid && req.session.role === "admin") {
+    try {
+      const [result] = await db.execute(
+        `select * from users where role = 'customer'`,
+      );
+      res.json({ success: true, data: result });
+    } catch (error) {
+      res.json({ success: false });
+    }
   } else {
-    res.json({ success: true, items: [] });
+    res.send("Unauthorized!");
   }
 });
 
@@ -115,255 +197,140 @@ app.get("/get-user-info", (req, res) => {
       isSuspended: req.session.isSuspended,
     });
   } else {
-    return res.json({ success: false });
-  }
-});
-
-app.get("/api/get-cart-subtotal", async (req, res) => {
-  if (req.session.cart) {
-    if (req.session.cart.length == 0) return res.json({ success: false });
-
-    const itemsId = req.session.cart.map((item) => item.itemId);
-    const result = await db
-      .promise()
-      .query(`select price from items where id in (${[...itemsId]})`);
-    const total = req.session.cart.reduce((accu, item, index) => {
-      return accu + +item.quantity * result[0][index].price;
-    }, 0);
-
-    res.json({ success: true, total: total });
-  } else {
     res.json({ success: false });
   }
-});
-
-app.get("/api/list-all-items", (req, res) => {
-  db.query("select * from items", (err, result) => {
-    if (err) {
-      console.log(err.message);
-      res.send("error");
-    } else {
-      res.json(result);
-    }
-  });
-});
-
-app.get("/api/list-all-users", async (req, res) => {
-  const response = await db
-    .promise()
-    .query(`select * from users where role = 'customer'`);
-  res.json({ success: true, data: response[0] });
-});
-
-app.get("/api/list-by-category/:cat", (req, res) => {
-  const cat = req.params.cat;
-
-  db.query("select * from items where category = ?", [cat], (err, result) => {
-    if (err) {
-      console.log(err.message);
-      res.send("error");
-    } else {
-      res.json(result);
-    }
-  });
-});
-
-app.get("/api/search-item/:value", (req, res) => {
-  const value = req.params.value;
-
-  db.query(
-    "select * from items where title like ?",
-    [`%${value}%`],
-    (err, result) => {
-      if (err) {
-        console.log(err.message);
-        res.send("error");
-      } else {
-        res.json(result);
-      }
-    },
-  );
 });
 
 app.get("/api/search-user/:uname", async (req, res) => {
-  const uname = req.params.uname;
-  console.log(uname);
-  const result = await db
-    .promise()
-    .query("select * from users where role = 'customer' and fullname like ?", [
-      `%${uname}%`,
-    ]);
-  res.json({ success: true, data: result[0] });
-});
-
-app.get("/api/get-product-stat", async (req, res) => {
-  if (req.session.role) {
-    const productResult = await db.promise().query(`select * from items`);
-    const totalProduct = productResult[0].length;
-    const salesResult = await db.promise().query(`select * from orders`);
-    const totalSales = salesResult[0].reduce((accu, order) => {
-      return accu + +order.total_price;
-    }, 0);
-    const stat = { totalProduct, totalSales };
-    res.json({ success: true, stat: stat });
+  if (req.session.uid && req.session.role === "admin") {
+    try {
+      const uname = req.params.uname;
+      const result = await db.execute(
+        "select * from users where role = 'customer' and fullname like ? LIMIT 1",
+        [`%${uname}%`],
+      );
+      res.json({ success: true, data: result[0] });
+    } catch (error) {
+      res.json({ success: false });
+    }
   } else {
-    res.json({ success: false });
+    res.send("Unauthorized!");
   }
 });
 
 app.get("/api/get-user-stat", async (req, res) => {
-  const customerResult = await db
-    .promise()
-    .query(`select * from users where role = 'customer'`);
-  const totalCustomers = customerResult[0].length;
+  if (req.session.uid && req.session.role === "admin") {
+    try {
+      const [customerResult] = await db.execute(
+        `select * from users where role = 'customer'`,
+      );
+      const totalCustomers = customerResult.length;
 
-  const suspendedResult = await db
-    .promise()
-    .query(`select * from users where role = 'customer' and isSuspended = '1'`);
-  const totalSuspended = suspendedResult[0].length;
+      const [suspendedResult] = await db.execute(
+        `select * from users where role = 'customer' and isSuspended = '1'`,
+      );
+      const totalSuspended = suspendedResult.length;
 
-  const activeResult = await db
-    .promise()
-    .query(`select * from users where role = 'customer' and isSuspended = '0'`);
-  const totalActive = activeResult[0].length;
+      const [activeResult] = await db.execute(
+        `select * from users where role = 'customer' and isSuspended = '0'`,
+      );
+      const totalActive = activeResult.length;
 
-  const stat = { totalCustomers, totalSuspended, totalActive };
-
-  res.json({ success: true, stat: stat });
-});
-
-app.get("/api/product/:id", (req, res) => {
-  const id = req.params.id;
-
-  db.query("select * from items where id = ?", [id], (err, result) => {
-    if (err) {
-      console.log(err.message);
+      const stat = { totalCustomers, totalSuspended, totalActive };
+      res.json({ success: true, stat: stat });
+    } catch (error) {
       res.json({ success: false });
-    } else {
-      res.json({ success: true, data: result });
     }
-  });
+  } else {
+    res.send("Unauthorized!");
+  }
 });
 
-app.post("/api/upload-product", upload.single("image"), (req, res) => {
-  const imagePath = "/images/" + req.file.filename;
-  const { title, category, description, price, stock } = req.body;
-
-  db.query(
-    "insert into items values (?, ?, ?, ?, ?, ?, ?)",
-    [null, title, category, description, price, stock, imagePath],
-    (err) => {
-      if (err) {
-        console.log(err.message);
-        res.send("error");
-      } else {
-        console.log("Successfully added!");
-        res.send("success");
-      }
-    },
-  );
+app.delete("/api/delete-user/:id", async (req, res) => {
+  if (req.session.uid && req.session.role === "admin") {
+    try {
+      const id = req.params.id;
+      await db.execute(`delete from users where id = ?`, [id]);
+      res.json({ success: true });
+    } catch (error) {
+      res.json({ success: false });
+    }
+  } else {
+    res.send("Unauthorized!");
+  }
 });
 
-app.post("/api/checkout/:total", (req, res) => {
-  if (req.session.uid) {
-    const total = +req.params.total;
-    db.query(`insert into orders (total_price) values(?)`, [total], (err) => {
-      if (err) {
-        console.log("Error at checkout" + err.message);
-        res.json({ success: false });
-      } else {
+app.put("/api/suspend-user/:id", async (req, res) => {
+  if (req.session.uid && req.session.role === "admin") {
+    try {
+      const id = req.params.id;
+
+      await db.execute(`update users set isSuspended = '1' where id = ?`, [id]);
+      res.json({ success: true });
+    } catch (error) {
+      res.json({ success: false });
+    }
+  } else {
+    res.send("Unauthorized!");
+  }
+});
+
+app.put("/api/unsuspend-user/:id", async (req, res) => {
+  if (req.session.uid && req.session.role === "admin") {
+    try {
+      const id = req.params.id;
+
+      await db.execute(`update users set isSuspended = '0' where id = ?`, [id]);
+      res.json({ success: true });
+    } catch (error) {
+      res.json({ success: false });
+    }
+  } else {
+    res.send("Unauthorized!");
+  }
+});
+
+//////////////////////////////////////////////////////////////////////////////
+
+// Cart related operations
+app.post("/api/add-to-cart/:id", (req, res) => {
+  const itemId = req.params.id;
+  if (!req.session.cart) {
+    req.session.cart = [];
+  }
+  const exists = req.session.cart.find((cart) => cart.itemId == itemId);
+  if (!exists) {
+    req.session.cart.push({ itemId: itemId, quantity: 1 });
+    req.session.save((err) => {
+      if (!err) {
         res.json({ success: true });
       }
     });
   } else {
-    res.json({ success: false });
+    res.json({ success: true });
   }
 });
 
-app.post("/api/edit-item/:id", upload.single("image"), (req, res) => {
-  const id = req.params.id;
-  const imagePath = "/images/" + req.file.filename;
-  const { title, category, description, price, stock } = req.body;
+app.get("/api/get-cart-items", async (req, res) => {
+  if (req.session.cart && req.session.cart.length != 0) {
+    try {
+      const items = [];
+      const itemsId = req.session.cart.map((cart) => cart.itemId);
+      const [result] = await db.execute(
+        `select * from items where id in (${[...itemsId]})`,
+      );
 
-  db.query(
-    `update items set title = ?, category = ?, description = ?, price = ?, stock = ?, img = ? where id = ${id}`,
-    [title, category, description, price, stock, imagePath],
-    (err) => {
-      if (err) {
-        console.log(err.message);
-        res.send("error");
-      } else {
-        console.log("Successfully edited");
-        res.send("success");
-      }
-    },
-  );
-});
+      result.forEach((item, index) => {
+        item.quantity = req.session.cart[index].quantity;
+        items.push(item);
+      });
 
-app.post("/api/delete-item/:id", upload.single("image"), (req, res) => {
-  const id = req.params.id;
-
-  db.query("delete from items where id = ?", [id], (err) => {
-    if (err) {
-      console.log(err.message);
-      res.send("error");
-    } else {
-      console.log("Successfully edited");
-      res.send("success");
+      res.json({ success: true, items: items });
+    } catch (error) {
+      res.json({ success: false });
     }
-  });
-});
-
-app.delete("/api/delete-user/:id", async (req, res) => {
-  const id = req.params.id;
-
-  await db.promise().query(`delete from users where id = ?`, [id]);
-  res.json({ success: true });
-});
-
-app.put("/api/suspend-btn/:id", async (req, res) => {
-  const id = req.params.id;
-
-  await db
-    .promise()
-    .query(`update users set isSuspended = '1' where id = ?`, [id]);
-  res.json({ success: true });
-});
-
-app.put("/api/unsuspend-user/:id", async (req, res) => {
-  const id = req.params.id;
-
-  await db
-    .promise()
-    .query(`update users set isSuspended = '0' where id = ?`, [id]);
-  res.json({ success: true });
-});
-
-app.post("/api/register-user", upload.none(), async (req, res) => {
-  const { fname, email, password } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  db.query(
-    "insert into users (fullname, email, password) values (?, ?, ?)",
-    [fname, email, hashedPassword],
-    (err) => {
-      if (err) {
-        console.log(err.message);
-        res.json({ success: false, message: "Something went wrong!" });
-      } else {
-        res.json({ success: true, message: "Successfully Added" });
-      }
-    },
-  );
-});
-
-app.delete("/api/delete-cart-element/:id", (req, res) => {
-  if (req.session.cart) {
-    const id = req.params.id;
-    let carts = req.session.cart;
-    carts = carts.filter((item) => item.itemId != id);
-    req.session.cart = carts;
-    res.json({ success: true });
+  } else {
+    res.json({ success: true, items: [] });
   }
 });
 
@@ -376,92 +343,173 @@ app.put("/api/adjust-cart-quantity/:id/:quantity", (req, res) => {
     });
 
     res.json({ success: true });
-  }
-});
-
-app.post("/api/add-to-cart/:id", (req, res) => {
-  const itemId = req.params.id;
-  if (!req.session.cart) {
-    req.session.cart = [];
-  }
-  const exists = req.session.cart.find((cart) => cart.itemId == itemId);
-  if (!exists) {
-    req.session.cart.push({ itemId: itemId, quantity: 1 });
-    req.session.save((err) => {
-      if (err) {
-        console.log(err.message);
-        res.json({ success: false });
-      } else {
-        res.json({ success: true });
-      }
-    });
   } else {
-    res.json({ success: true });
+    res.json({ success: false });
   }
 });
 
-app.get("/logout", (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      console.log("couldnt logout");
-    } else {
-      res.clearCookie("connect.sid");
-      return res.json({ success: true });
+app.delete("/api/delete-cart-element/:id", (req, res) => {
+  if (req.session.cart) {
+    const id = req.params.id;
+    let carts = req.session.cart;
+    carts = carts.filter((item) => item.itemId != id);
+    req.session.cart = carts;
+    res.json({ success: true });
+  } else {
+    res.json({ success: false });
+  }
+});
+
+app.get("/api/get-cart-subtotal", async (req, res) => {
+  if (req.session.cart) {
+    if (req.session.cart.length === 0) return res.json({ success: false });
+
+    try {
+      const itemsId = req.session.cart.map((item) => item.itemId);
+      const [result] = await db.execute(
+        `select price from items where id in (${[...itemsId]})`,
+      );
+      const total = req.session.cart.reduce((accu, item, index) => {
+        return accu + +item.quantity * result[index].price;
+      }, 0);
+
+      res.json({ success: true, total: total });
+    } catch (error) {
+      res.json({ success: false });
     }
-  });
+  } else {
+    res.json({ success: false });
+  }
 });
 
-app.post("/api/login", upload.none(), (req, res) => {
-  const { email, password } = req.body;
-  db.query(
-    "select * from users where email = ?",
-    [email],
-    async (err, result) => {
-      if (err) {
-        console.log("err");
-        return res.json({ success: false, message: "Something went wrong!" });
-      } else {
-        if (result.length === 0) {
-          return res.json({
-            success: false,
-            message: "Email is not registered!",
-          });
-        }
+app.post("/api/checkout/:total", async (req, res) => {
+  if (req.session.uid) {
+    try {
+      const total = +req.params.total;
+      await db.execute(`insert into orders (total_price) values(?)`, [total]);
+      res.json({ success: true });
+    } catch (error) {
+      res.json({ success: false });
+    }
+  } else {
+    res.json({ success: false });
+  }
+});
+//////////////////////////////////////////////////////////////////////////////////////////
 
-        const valid = await bcrypt.compare(password, result[0].password);
+//Item related operations
+app.post("/api/upload-product", upload.single("image"), async (req, res) => {
+  try {
+    const imagePath = "/images/" + req.file.filename;
+    const { title, category, description, price, stock } = req.body;
 
-        if (!valid) {
-          return res.json({
-            success: false,
-            message: "Password is not correct!",
-          });
-        } else {
-          if (result[0].isSuspended) {
-            return res.json({
-              success: false,
-              message: "Sorry, your account is suspended!",
-            });
-          }
-          req.session.uid = result[0].id;
-          req.session.fname = result[0].fullname;
-          req.session.role = result[0].role;
-          req.session.isSuspended = result[0].isSuspended;
-
-          req.session.save((err) => {
-            if (err) {
-              console.log(err.message);
-            } else {
-              return res.json({
-                success: true,
-                redirectUrl:
-                  result[0].role == "admin" ? "/admin-dashboard" : "/",
-              });
-            }
-          });
-        }
-      }
-    },
-  );
+    await db.execute("insert into items values (?, ?, ?, ?, ?, ?, ?)", [
+      null,
+      title,
+      category,
+      description,
+      price,
+      stock,
+      imagePath,
+    ]);
+    res.json({ success: true });
+  } catch (error) {
+    res.json({ success: false });
+  }
 });
 
-app.listen(process.env.PORT, () => console.log("Server started at port 4000"));
+app.get("/api/list-all-items", async (req, res) => {
+  try {
+    const [result] = await db.execute("select * from items");
+    res.json({ success: true, data: result });
+  } catch (error) {
+    res.json({ success: false });
+  }
+});
+
+app.get("/api/list-by-category/:cat", async (req, res) => {
+  try {
+    const cat = req.params.cat;
+    const [result] = await db.execute(
+      "select * from items where category = ?",
+      [cat],
+    );
+
+    res.json({ success: true, data: result });
+  } catch (error) {
+    res.json({ success: false });
+  }
+});
+
+app.get("/api/search-item/:value", async (req, res) => {
+  try {
+    const value = req.params.value;
+    const [result] = await db.execute(
+      "select * from items where title like ?",
+      [`%${value}%`],
+    );
+
+    res.json({ success: true, data: result });
+  } catch (error) {
+    res.json({ success: false });
+  }
+});
+
+app.get("/api/get-product-stat", async (req, res) => {
+  if (req.session.role) {
+    try {
+      const [productResult] = await db.execute(`select * from items`);
+      const totalProduct = productResult.length;
+      const [salesResult] = await db.execute(`select * from orders`);
+      const totalSales = salesResult.reduce((accu, order) => {
+        return accu + +order.total_price;
+      }, 0);
+      const stat = { totalProduct, totalSales };
+      res.json({ success: true, stat: stat });
+    } catch (error) {
+      res.json({ success: false });
+    }
+  } else {
+    res.json({ success: false });
+  }
+});
+
+app.get("/api/product/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const [result] = await db.execute("select * from items where id = ?", [id]);
+    res.json({ success: true, data: result });
+  } catch (error) {
+    res.json({ success: false });
+  }
+});
+
+app.post("/api/edit-item/:id", upload.single("image"), async (req, res) => {
+  try {
+    const id = req.params.id;
+    const imagePath = "/images/" + req.file.filename;
+    const { title, category, description, price, stock } = req.body;
+
+    await db.execute(
+      `update items set title = ?, category = ?, description = ?, price = ?, stock = ?, img = ? where id = ${id}`,
+      [title, category, description, price, stock, imagePath],
+    );
+    res.json({ success: true });
+  } catch (error) {
+    res.json({ success: false });
+  }
+});
+
+app.post("/api/delete-item/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    await db.execute("delete from items where id = ?", [id]);
+    res.json({ success: true });
+  } catch (error) {
+    res.json({ success: false });
+  }
+});
+
+app.listen(process.env.PORT, () =>
+  console.log(`Server started at port ${process.env.PORT}`),
+);

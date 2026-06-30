@@ -23,14 +23,15 @@
 
 .product-desc-text {
     font-family: sans-serif;
+    opacity: 0.7;
 }
 
 .product-cat {
     font-family: sans-serif;
 }
 
-.item-btn {
-    align-self: center;
+.add-to-cart-btn {
+    align-self: flex-start;
     padding: 15px 100px;
 }
 

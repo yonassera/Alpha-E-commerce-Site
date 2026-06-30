@@ -6,8 +6,36 @@
     <title>Register - Alpha Market</title>
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/authenticate.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
 </head>
 <body>
+    <header>
+      <a href="/" style="text-decoration: none">
+        <h1 class="text logo">Alpha Market</h1>
+      </a>
+
+      <div class="right-header">
+        <a id="cart" href="/carts">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="35px"
+            viewBox="0 -960 960 960"
+            width="30px"
+            fill="#e3e3e3"
+          >
+            <path
+              d="M231.83-102.64Q210-124.62 210-155.47q0-30.86 21.98-52.7Q253.95-230 284.81-230t52.69 21.98q21.83 21.97 21.83 52.83t-21.97 52.69q-21.98 21.83-52.83 21.83-30.86 0-52.7-21.97Zm400 0Q610-124.62 610-155.47q0-30.86 21.98-52.7Q653.95-230 684.81-230t52.69 21.98q21.83 21.97 21.83 52.83t-21.97 52.69q-21.98 21.83-52.83 21.83-30.86 0-52.7-21.97ZM238.67-734 344-515.33h285.33l120-218.67H238.67ZM206-800.67h589.38q22.98 0 34.97 20.84 11.98 20.83.32 41.83L693.33-490.67q-11 19.34-28.87 30.67-17.87 11.33-39.13 11.33H324l-52 96h487.33V-286H278q-43 0-63-31.83-20-31.84-.33-68.17l60.66-111.33-149.33-316H47.33V-880h121.34L206-800.67Zm138 285.34h285.33H344Z"
+            />
+          </svg>
+        </a>
+      </div>
+    </header>
+    
     <section class="main">
         <form class="reg-form">
             <h1 class="form-title">Register</h1>
@@ -24,17 +52,18 @@
             
             <div class="form-item">
                 <label for="password" class="field">Password</label>
-                <input type="text" name="password" required id="password">
+                <input type="password" name="password" required id="password">
             </div>
             
             <div class="form-item">
                 <label for="confirm-password" class="field">Confirm Password</label>
-                <input type="text" name="confirm-password" required id="confirm-password">
+                <input type="password" name="confirm-password" required id="confirm-password">
             </div>
             <p class="text msg"></p>
             <button class="btn">Register</button>
         </form>
     </section>
     <script src="/js/register.js"></script>
+    <script src="/js/fetch-name.js" defer></script>
 </body>
 </html>
