@@ -153,6 +153,8 @@ Create Admin Account
 ```bash
 node scripts/createAdmin.js
 ```
+Email: admin@gmail.com
+Password: 123456
 
 Open your browser.
 
