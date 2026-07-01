@@ -103,7 +103,7 @@ Move into the project folder.
 cd Alpha-E-commerce-Site
 ```
 
-Install dependencies.
+Install dependencies (NodeJs Must be installed first).
 
 ```bash
 npm install
@@ -146,6 +146,12 @@ Start the server.
 
 ```bash
 npm run start
+```
+
+Create Admin Account
+
+```bash
+node scripts/createAdmin.js
 ```
 
 Open your browser.
