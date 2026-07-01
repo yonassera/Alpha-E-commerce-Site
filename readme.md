@@ -6,6 +6,34 @@ The application allows customers to browse products, manage a shopping cart, cre
 
 ---
 
+## 📸 Screenshots
+
+### Home page
+
+![Home](screenshots/hero.png)
+
+### Product Listing
+
+![Home](screenshots/product-listings.png)
+
+### Product Page
+
+![Home](screenshots/product-page.png)
+
+### Carts
+
+![Home](screenshots/carts.png)
+
+### Admin - Products
+
+![Home](screenshots/admin-products.png)
+
+### Admin - Users
+
+![Home](screenshots/admin-users.png)
+
+---
+
 ## ✨ Features
 
 ### Customer
@@ -125,34 +153,6 @@ Open your browser.
 ```
 http://localhost:4000
 ```
-
----
-
-## 📸 Screenshots
-
-### Home page
-
-![Home](screenshots/hero.png)
-
-### Product Listing
-
-![Home](screenshots/product-listings.png)
-
-### Product Page
-
-![Home](screenshots/product-page.png)
-
-### Carts
-
-![Home](screenshots/carts.png)
-
-### Admin - Products
-
-![Home](screenshots/admin-products.png)
-
-### Admin - Users
-
-![Home](screenshots/admin-users.png)
 
 
 ---
