@@ -35,10 +35,10 @@ const upload = multer({ storage });
 let db;
 try {
   const pool = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "123456",
-    database: "alpha_ecommerce_database",
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
   });
   db = pool.promise();
 } catch (err) {
@@ -95,21 +95,28 @@ app.get("/admin-users", (req, res) => {
 
 // User related operations
 app.post("/api/register-user", upload.none(), async (req, res) => {
-  if (req.session.uid && req.session.role === "admin") {
-    try {
-      const { fname, email, password } = req.body;
-      const hashedPassword = await bcrypt.hash(password, 10);
+  try {
+    const { fname, email, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-      await db.execute(
-        "insert into users (fullname, email, password) values (?, ?, ?)",
-        [fname, email, hashedPassword],
-      );
-      res.json({ success: true, message: "Successfully Added" });
-    } catch (err) {
-      res.json({ success: false, message: "Something went wrong!" });
+    const [result] = await db.execute("select * from users where email = ?", [
+      email,
+    ]);
+
+    if (result.length !== 0) {
+      return res.json({
+        success: false,
+        message: "Email is already registered!",
+      });
     }
+    await db.execute(
+      "insert into users (fullname, email, password) values (?, ?, ?)",
+      [fname, email, hashedPassword],
+    );
+    res.json({ success: true, message: "Successfully Added." });
+  } catch (err) {
+    res.json({ success: false, message: "Something went wrong!" });
   }
-  res.send("Unauthorized");
 });
 
 app.post("/api/login", upload.none(), async (req, res) => {
@@ -387,6 +394,7 @@ app.post("/api/checkout/:total", async (req, res) => {
     try {
       const total = +req.params.total;
       await db.execute(`insert into orders (total_price) values(?)`, [total]);
+      3;
       res.json({ success: true });
     } catch (error) {
       res.json({ success: false });
