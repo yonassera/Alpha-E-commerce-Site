@@ -82,6 +82,8 @@ The application allows customers to browse products, manage a shopping cart, cre
 
 ### Other Tools
 
+* Excalidraw (For sketching the structure)
+* ChatGPT (For generating image for the design)
 * Multer (image uploads)
 * Express Session
 * bcrypt
