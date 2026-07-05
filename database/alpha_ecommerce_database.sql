@@ -1,4 +1,4 @@
-CREATE DATABASE alpha_ecommerce_database;
+CREATE DATABASE IF NOT EXISTS alpha_ecommerce_database;
 USE alpha_ecommerce_database;
 
 CREATE TABLE users (
