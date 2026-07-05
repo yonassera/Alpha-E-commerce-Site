@@ -124,25 +124,28 @@ DB_NAME=alpha_ecommerce_database
 
 ## Database Setup
 
-Before running the application, create the MySQL database.
+After running the database server, import the database schema and sample data.
 
-### Option 1: Using MySQL Command Line
+### Option 1: Using the MySQL Command Line
 
-Run:
+Run the following commands:
 
 ```bash
 mysql -u root -p < database/alpha_ecommerce_database.sql
+mysql -u root -p < database/data.sql
 ```
 
-This will create the database and all required tables automatically.
+The first command creates the database and all required tables. The second command imports the sample data.
 
 ### Option 2: Using MySQL Workbench
 
 1. Open MySQL Workbench.
 2. Connect to your MySQL server.
 3. Open `database/alpha_ecommerce_database.sql`.
-4. Click the **Execute** button (lightning bolt).
-5. The database and tables will be created automatically.
+4. Click the **Execute** button (⚡).
+5. Open `database/data.sql`.
+6. Click the **Execute** button (⚡) again.
+7. The database, tables, and sample data will be imported.
 
 Start the server.
 
